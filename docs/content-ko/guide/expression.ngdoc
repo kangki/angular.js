@@ -6,6 +6,8 @@ Expressions are JavaScript-like code snippets that are usually placed in binding
 expression }}`. Expressions are processed by {@link api/ng.$parse $parse}
 service.
 
+표현식은...
+
 For example, these are all valid expressions in angular:
 
   * `1+2`
