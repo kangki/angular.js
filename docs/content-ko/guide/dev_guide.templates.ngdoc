@@ -2,6 +2,7 @@
 @name Developer Guide: Understanding Angular Templates
 @description
 
+Angular 템플릿은, 하는 declarative specification 입니다.
 An Angular template is the declarative specification that, along with information from the model
 and controller, becomes the rendered view that a user sees in the browser. It is the static DOM,
 containing HTML, CSS, and angular-specific elements and angular-specific element attributes.  The
