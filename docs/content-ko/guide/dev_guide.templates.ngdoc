@@ -78,7 +78,7 @@ eight.
 
 간단한 싱글페이지 앱에서는 템플릿이 HTML, CSS, angular 디렉티브가 모두 하나의 HTML 파일(주로 'index.html')로 구성되있다. 조금 더 복잡한 앱에서는, 여러개의 뷰를 별도의 HTML 파일들에 위치해있는 템플릿의 부분부분을 "partials"를 이용해 하나의 메인페이지에 보여줄 수 있다. partials를 {@link api/ng.directive:ngView ngView} 디렉티브와 연결되있는 {@link api/ng.$route $route} 서비스 를 이용해 메인페이지에 "include" 한다.
 
-## Related Topics\
+## Related Topics
 
 * {@link dev_guide.templates.filters Angular Filters}
 * {@link forms Angular Forms}
@@ -87,7 +87,7 @@ eight.
 
 * {@link api/index API Reference}
 
-## 관련 토픽\
+## 관련 토픽
 
 * {@link dev_guide.templates.filters Angular 필터}
 * {@link forms Angular 폼}
