@@ -26,6 +26,13 @@ DOM = DOM
 
 Guide = 문서
 
+snippet = 스니펫
+
+Reference = 레퍼런스
+
+Property = 프로퍼티
+
+Scope = 스코프 (단, angularjs의 scope가 아니라 범위의 의미로 쓰일 경우 범위로 해석.)
 
 ## 한글로 번역 할 단어
 
