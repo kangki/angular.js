@@ -6,7 +6,7 @@
 
 1. {@link guide/concepts conceptual overview} 를 읽으세요. Angular의 어휘와 컴포넌트를이 어떻게 함께 구동되는지 이해하세요. 이는 AngularJS 주요 기능을 포함하고 당신이 어떻게 개발환경을 설정하는지 보여줍니다.
 
-2. {@link tutorial/ AngularJS Tutorial}를 하세요. node.js 웹 서버에 구동되는 테스트를 이용하여 어플리케이션을 만들고 완성을 통하여 end-to-end를 경험하세요.
+2. {@link tutorial/ AngularJS Tutorial}를 하세요. node.js 웹 서버에서 구동되는 테스트들이 다 있는 어플리케이션 구현의 끝을 경험 해보세요.
 
 3. {@link https://github.com/angular/angular-seed Seed App project template} 를 다운로드 하거나, 클론 하세요. 디렉토리 레이아웃, 테스트 장치, 그리고 당신의 어플리케이션 개발을 시작할 수 있는 스크립트를 제공합니다.
 
