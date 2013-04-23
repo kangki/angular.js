@@ -15,7 +15,7 @@ HTML, CSS, 그리고 angular 특유의 요소, 그리고 그 요소의 속성을
 Note:  덧붙여 말하자면 위에 있는 요소가 템플릿에 선언이 되면, JavaScript 코드로도 접근 할 수있다.
 
 다음 코드 스니펫은 표준 HTML 태그와 Angular {@link guide/directive 지시자(directives)} 
-그리고 {@link expression 표현식(expressions)}:의 중괄호를 통한 바인딩을 한 간단한 Angular 템플릿을 보여준다:
+그리고 {@link expression 표현식(expressions)}의 중괄호를 통한 바인딩을 한 간단한 Angular 템플릿을 보여준다:
 
 <pre>
 <html ng-app>
