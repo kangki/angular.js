@@ -1,22 +1,16 @@
 @ngdoc overview
-@name Downloading
+@name 다운로딩
 @description
 
-# Including angular scripts from the Google CDN
-The quickest way to get started is to point your html `<script>` tag to a Google CDN URL.
-This way, you don't have to download anything or maintain a local copy.
+# Google CDN 에서 angular 스크립트 추가하기
+가장빠른 시작방법은 html의 '<script>'태그를 Google CDN URL로 사용하는 것입니다.
+이 방법은 어떤것도 다운로드 하지 않아도 되며, 로컬영역에 보관하지 않아도 됩니다.
 
-There are two types of angular script URLs you can point to, one for development and one for
-production:
+angular 스크립트 URL은 두가지 종류가 있습니다. 하나는 개발단계용, 다른하나는 제품화단계용입니다.:
+* __angular-<version>.js__ — 이건 당신도 읽을 수 있으며, 축소판이 아니고, 웹개발에 최적화 되었습니다.
+* __angular-<version>.min.js__ — 이것은 축소판으로 제품화단계를 위해서 사용하시길 강력히 추천합니다.
 
-* __angular-<version>.js__ — This is the human-readable, non-minified version, suitable for web
-development.
-* __angular-<version>.min.js__ — This is the minified version, which we strongly suggest you use in
-production.
-
-To point your code to an angular script on the Google CDN server, use the following template.  This
-example points to the minified version 1.0.2:
-
+Google CDN 서버를 이용하려면, 다음 양식을 사용하세요. 이 예제는 축소판 1.0.2 를 사용합니다.
 <pre>
   <!doctype html>
   <html ng-app>
@@ -29,47 +23,29 @@ example points to the minified version 1.0.2:
   </html>
 </pre>
 
-Note that only versions 1.0.1 and above are available on the CDN, if you need an earlier version
-you can use the <http://code.angularjs.org/> URL which was the previous recommended location for
-hosted code source. If you're still using the angular server you should switch to the CDN version
-for even faster loading times.
+1.0.1과 그 상위 버젼만 Google CDN에 제공됨을 참조하세요. 더 이전 버젼이 필요하다면 이전에 코드소스를 제공했던 추천 장소인 <http://code.angularjs.org/> URL를 하실 수 있습니다. 만약 아직 angular 서버를 사용하고 있다면, 빠른 로딩속도를 위해서 Google CDN 버젼으로 변경하셔야 합니다.
 
-# Downloading and hosting angular files locally
-This option is for those who want to work with angular offline, or those who want to host the
-angular files on their own servers.
+#로컬 angular 파일 호스팅과 다운로딩
+이 옵션은 오프라인으로 angular 를 사용하고 싶은 분들이나, 운영하시는 서버상의 angular 파일을 호스트 하고 싶으신 분들을 위한 것입니다.
 
-If you navigate to <http://code.angularjs.org/>, you'll see a directory listing with all of the
-angular versions since we started releasing versioned build artifacts (quite late in the project
-lifetime).  Each directory contains all artifacts that we released for a particular version.
-Download the version you want and have fun.
+만약 <http://code.angularjs.org/>를 방문하시면, 프로젝트 진행시간상 많이 늦긴했지만 버젼화된 build artifacts를 출시하기 시작했기 때문에 모든 angular 버젼의 디렉터리 리스트를 보실 수 있습니다. 각 디렉터리는 특정 버젼에 출시했던 모든 artifacts를 포함하고 있습니다.
+원하는 버젼을 다운받고, 즐기세요.
 
-Each directory under <http://code.angularjs.org/> includes the following set of files:
+<http://code.angularjs.org/>에 제공되는 각각의 디렉터리는 다음과 같은 파일들을 제공합니다.
 
-* __`angular.js`__ — This file is non-obfuscated, non-minified, and human-readable by
-opening it it any editor or browser. In order to get better error messages during development, you
-should always use this non-minified angular script.
+* __`angular.js`__ — 이 파일은 오퍼스케이트 되지 않았고, 축소되지 않았습니다. 그리고, 어떤 에디터나 브라우저로 열어도 읽으실 수 있습니다. 개발도중 좀 더 나은 에러 메시지를 보시려면, 항상 축소되지 않은 angular 스크립트를 사용하셔야 합니다.
 
-* __`angular.min.js`__ — This is a minified and obfuscated version of
-`angular.js` created with the Closure compiler. Use this version for production in order
-to minimize the size of the application that is downloaded by your user's browser.
+* __`angular.min.js`__ — 이파일은 Closure 컴파일러로 만들어진 'angular.js' 오퍼스케이트되고 축소된 파일입니다. 사용자의 브라우저에서 다운로드되는 어플리케이션의 사이즈를 최소화하기 위해서 제품화단계용으로 이 버젼을 사용하십시오.
 
-* __`angular.zip`__ — This is a zip archive that contains all of the files released
-for this angular version. Use this file to get everything in a single download.
+* __`angular.zip`__ — 이 버전에 출시된 모든 파일이 이 zip 압축파일에 담겨있습니다. 한번의 다운로드로 모든 걸 갖으시려면 이 파일을 사용하십시오.
 
-* __`angular-mocks.js`__ — This file contains an implementation of mocks that makes
-testing angular apps even easier. Your unit/integration test harness should load this file after
-`angular-<version>.js` is loaded.
+* __`angular-mocks.js`__ — 이 파일은 이전 버전에서도 angulaer 어플리케이션을 테스트 할 수 있도록 만든 모형 구현이 포함되어있습니다. 당신이 작성한 unit/integration test 장치는 `angular-<version>.js`로딩이 끝난 후 이 파일을 로드해야만 합니다.
 
-* __`angular-scenario.js`__ — This file is a very nifty JavaScript file that allows you
-to write and execute end-to-end tests for angular applications.
+* __`angular-scenario.js`__ — 이 파일은 angular 어플리케이션에서의 end-to-end 테스트 작성과 실행을 할 수 있도록하는 아주 훌륭한 자바스크립트 파일 입니다.
 
-* __`angular-loader.min.js`__ — Module loader for Angular modules. If you are loading multiple script files containing
- Angular modules, you can load them asynchronosuly and in any order as long as you load this file first. Often the
- contents of this file are copy&pasted into the `index.html` to avoid even the inial request to `angular-loader.min.js`.
- See [angular-seed](https://github.com/angular/angular-seed/blob/master/app/index-async.html) for an example of usage.
+* __`angular-loader.min.js`__ — angular 모듈을 위한 모듈 로더. 만약 angular 모듈을 포함하는 다중 스크립트 파일을 로딩하려한다면, 비동기방식으로 로딩할수도 있고, 이 파일을 먼저 로드하고 어떤 순서든 로드할 수도 있습니다. 종종 본 파일의 내용은 `angular-loader.min.js`로의 초기요청을 피하기 위해서 'index.html'에 복사&붙여넣기 됩니다. 사용예제를 위해서 [angular-seed](https://github.com/angular/angular-seed/blob/master/app/index-async.html)를 참조하십시오.
 
-* __`angular-resource.js`__, __`angular-cookies.js`__, etc - extra Angular modules with additional functionality.
+* __`angular-resource.js`__, __`angular-cookies.js`__, etc - 추가 기능을 위한 추가 angular 모듈
 
-* __`docs`__ — this directory contains all the files that compose the
-<http://docs.angularjs.org/> documentation app. These files are handy to see the older version of
-our docs, or even more importantly, view the docs offline.
+* __`docs`__ — 이 사전은 <http://docs.angularjs.org/> 문서화 어플리케이션을 구성하는 모든 파일을 담고 있습니다. 이 파일들은 이전 버젼의 문서를을 보기 쉽고, 더 중요하게는 오프라인으로 열람 할 수 있습니다.
+
