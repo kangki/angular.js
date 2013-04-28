@@ -1,42 +1,35 @@
 @ngdoc overview
-@name Contributing
+@name 기여하기
 @description
 
 
-* <a href="#H1_1">License</a>
-* <a href="#H1_2">Contributing to Source Code</a>
-* <a href="#H1_3">Applying Code Standards</a>
-* <a href="#H1_4">Checking Out and Building `Angular`</a>
-* <a href="#H1_5">Submitting Your Changes</a>
+* <a href="#H1_1">라이센스</a>
+* <a href="#H1_2">소스코드에 기여하기</a>
+* <a href="#H1_3">코드 기준 적용하기</a>
+* <a href="#H1_4">체크아웃 하고 angluarJS 만들기</a>
+* <a href="#H1_5">변경사항 제출하기</a>
 
 
 <a name="H1_1"></a>
-# License
+# 라이센스
+AngularJS는 {@link http://github.com/angular/angular.js/blob/master/LICENSE MIT license} 라이센스를 근거한 오픈소스 프로젝트입니다.
+기여에 참여한다면 언제든지 환영합니다. AngularJS code base 작업하실 때는 이 페이지에 제공되는 안내서를 따라주시기 바랍니다.
 
-AngularJS is an open source project licensed under the {@link
-http://github.com/angular/angular.js/blob/master/LICENSE MIT license}. Your contributions are
-always welcome. When working with AngularJS code base, please follow the guidelines provided on
-this page.
 
 
 <a name="H1_2"></a>
-# Contributing to Source Code
+# 소스코드에 기여하기
+저희는 당신이 소스코드에 기여하고, AngularJS를 보다 발전될 수 있도록 만들어주길 너무나도 바랍니다. 당신이 따라주길 바라는 안내서는 다음과 같습니다.
 
-We'd love for you to contribute to our source code and to make AngularJS even better than it is
-today! Here are the guidelines we'd like you to follow:
+* 당신이 프로젝트에 기여하고자 하는 주요변화요소는 저희 노력을 조절하고, 중복작업을 예방하고, 당신의 작업이 성공적으로 적용될 수 있도록 도울 수 있기 때문에
+{@link https://groups.google.com/forum/?hl=en#!forum/angular mailing list}를 통하여 사전에 상의해주십시오.
 
-* Major changes that you intend to contribute to the project should be discussed first on our {@link
-https://groups.google.com/forum/?hl=en#!forum/angular mailing list} so that we can better
-coordinate our efforts, prevent  duplication of work, and help you to craft the change so that it
-is successfully accepted upstream.
-
-* Small changes and bug fixes can be crafted and submitted to Github as a <a href="#H1_5">pull
-request</a>.
+* 버그 수정과 작은 변경요소는 작업하고, <a href="#H1_5">pull request</a>로서 Github에 제출할 수 있습니다.
 
 
 
 <a name="H1_3"></a>
-# Applying Code Standards
+# 코드 기준 적용하기
 
 To ensure consistency throughout the source code, keep these rules in mind as you are working:
 
