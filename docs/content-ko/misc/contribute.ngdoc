@@ -31,33 +31,32 @@ AngularJS는 {@link http://github.com/angular/angular.js/blob/master/LICENSE MIT
 <a name="H1_3"></a>
 # 코드 기준 적용하기
 
-To ensure consistency throughout the source code, keep these rules in mind as you are working:
+소스코드를 전반적으로 일관성있게 하려면, 우리가 그렇게 임하듯이 다음과 같은 규칙을 명심하십시오.
 
-* All features or bug fixes must be tested by one or more <a href="#unit-tests">specs</a>.
+* 모든 기능 또는 버그 수정은 한명 또는 그 이상의 사람에게 테스트 되어야 합니다  <a href="#unit-tests">specs</a>.
 
-* All public API methods must be documented with ngdoc, an extended version of jsdoc (we added
-support for markdown and templating via `@ngdoc` tag). To see how we document our APIs, please
-check out the existing ngdocs.
+* 모든 공개 API 메소드는 ngdoc과 확정버젼의 jsdoc과 함께 서면화 되어야합니다 (jsdoc은 마크다운과 `@ngdoc` 태그를 통한 템플릿화를 위한 지원으로 저희
+가 추가했었습니다). 어떻게 저희가 API들을 서면화 하는지 보시려면, 현존하는 ngdocs를 확인하십시오.
 
-* With the exceptions listed below, we follow the rules contained in {@link
-http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml Google's JavaScript Style
-Guide}:
+* 아래에 나열된 예회사항과 함께 저희는 {@link http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml Google's
+JavaScript Style Guide}에 담겨있는 규칙을 따릅니다.
 
+  * 네임스페이스(namespaces)사용하지 않기: 대신, 저희는 익명클로저(anonymous closure)에서의 전체 `angular` code base전체를 감쌉니다 그리고
+    암암리보다는 명쾌하게 API를 export 합니다.
+//무슨.. 말이죠? 마지막 그리고 부터??
   * Do not use namespaces: Instead, we wrap the entire `angular` code base in an anonymous closure
 and export our API explicitly rather than implicitly.
 
-  * Wrap all code at 100 characters.
+  * 모든 코드는 100자에 감쌉니다.
 
-  * Instead of complex inheritance hierarchies, we prefer simple objects. We use prototypical
-inheritance only when absolutely necessary.
+  * 복잡한 상속구조를 대신하여, 저희는 간단한 오브젝트를 선호합니다. 우리는 정말 필요할 경우에는 원형적인 상속을 사용합니다.
 
-  * We love functions and closures and, whenever possible, prefer them over objects.
+  * 저희는 함수와 클로져를 사랑하고 가능하다면 언제든지 오브젝트보다 선호합니다.
 
-  * To write concise code that can be better minified, internally we use aliases that map to the
-external API. See our existing code to see what we mean.
+  * 보다 축소화될 수 있는 간결한 코드를 작성하기 위해서는 내부적으로 저희는 외부적인 API로 연결되는 가명을 사용합니다. 어떤의미인지 이해하기 위해서 우리의
+  현존하는 코드를 확인하십시오.
 
-  * We don't go crazy with type annotations for private internal APIs unless it's an internal API
-that is used throughout AngularJS. The best guidance is to do what makes the most sense.
+  * AngularJS 전반적으로 사용되는 내부 API가 아니고서는 개인적 API에 타입 주석에 얽매이지 않습니다. 가장 좋은 안내는 쉽게 이해하도록 하는 것입니다.
 
 
 <a name="H1_4"></a>
