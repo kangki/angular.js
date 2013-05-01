@@ -56,73 +56,70 @@ and export our API explicitly rather than implicitly.
   * 보다 축소화될 수 있는 간결한 코드를 작성하기 위해서는 내부적으로 저희는 외부적인 API로 연결되는 가명을 사용합니다. 어떤의미인지 이해하기 위해서 우리의
   현존하는 코드를 확인하십시오.
 
-  * AngularJS 전반적으로 사용되는 내부 API가 아니고서는 개인적 API에 타입 주석에 얽매이지 않습니다. 가장 좋은 안내는 쉽게 이해하도록 하는 것입니다.
+  * AngularJS 전반적으로 사용되는 내부 API가 아니라면 개인적인 API에 타입주석을 적는데 목매이지 않습니다. 가장 좋은 안내는 쉽게 이해하도록 하는 것입니다.
 
 
 <a name="H1_4"></a>
-# Checking Out and Building Angular
+# 체크아웃과 Angular빌드하기
 
-The AngularJS source code is hosted at {@link http://github.com Github}, which we also use to
-accept code contributions. The AngularJS repository can be found at **<https://github.com/angular/angular.js>**.
+AngularJS 소스코드는 {@link http://github.com Github}에 호스팅 되어있고, 우리는 또한 코드기여를 허용하는데도 사용하고 있습니다.
+AngularJS 레파지토리는 **<https://github.com/angular/angular.js>**에서 찾으실 수 있습니다.
 
-Several steps are needed to check out and build AngularJS:
+AngularJS 체크아웃과 빌드를 위해서는 몇가지 절차가 필요합니다:
 
+## Dependency 설치
 
-## Installation Dependencies
+AngularJS를 빌드하기 전에, 반듯이 당신의 컴퓨터에 다음과 같은 Dependency를 설정하고 설치해야만 합니다.
 
-Before you can build AngularJS, you must install or configure the following dependencies on your
-machine:
+* Git: {@link http://help.github.com/mac-git-installation Github Guide to Installing Git}는 Git정보에 대한 정말 좋은 소스입니다.
 
-* Git: The {@link http://help.github.com/mac-git-installation Github Guide to Installing Git} is
-quite a good source for information on Git.
+* {@link http://nodejs.org Node.js}: 우리는 서면화작업을 위해서, 웹서버 개발을 동작시키고, 테스트를 실행하고, 빌드 위해서 Node를 사용합니다.
+Node는 소스에서도 설치가 가능하고, 이미 준비된 번들로 설치도 가능합니다.
 
-* {@link http://nodejs.org Node.js}: We use Node to generate the documentation, run a
-development web server, run tests, and generate a build. Depending on your system, you can install Node either from source or as a
-pre-packaged bundle.
-
-  Once installed, you'll also need several npms (node packages), which you can install once you checked out a local copy
-  of the Angular repository (see below) with:
+  한번 설치를 하면, Angular레퍼지토리의 로컬 복사로 체크아웃을 하면 설치가 가능한 몇가지 npms(노드 패키지)가 필요할 것입니다. 다음을 통해서 체크아웃이
+  가능합니다:
 
   * `cd angular.js`
   * `npm install`
 
-* {@link http://gruntjs.com Grunt}: We use Grunt as our build system. Install the grunt command-line tool globally with:
+* {@link http://gruntjs.com Grunt}: 빌드 시스템으로 우리는 Grunt를 사용합니다. 다음으로 글로벌한 grunt 커멘드라인 툴을 설치하세요:
 
   * `sudo npm install -g grunt-cli`
 
 
-## Creating a Github Account and Forking Angular
+## Github 계정 만들고, Angular 포크하기
 
-To create a Github account, follow the instructions {@link https://github.com/signup/free here}.
-Afterwards, go ahead and {@link http://help.github.com/forking fork} the {@link
-https://github.com/angular/angular.js main angular repository}.
+Github 계정을 만들기 위해서 다음 {@link https://github.com/signup/free here}을 따라하세요.
+순서대로,  {@link http://help.github.com/forking fork} 와 {@link https://github.com/angular/angular.js main angular
+repository}를 계속 진행하십시오.
 
 
+## AngularJS 빌드하기
 ## Building AngularJS
 
-To build AngularJS, you check out the source code and use Grunt to generate the non-minified and
-minified AngularJS files:
+AngularJS를 빌드하기 위해서, 소스코드를 체크아웃하고, 축소판과 미축소판 AngularJS 파일을 만들기 위해서 Grunt를 사용하십시오.
 
-1. To clone your Github repository, run:
+1. 당신의 Github를 복제하기 위해서 다음을 실행하세요:
 
         git clone git@github.com:<github username>/angular.js.git
 
-2. To go to the AngularJS directory, run:
+2. AngularJS 디렉토리로 이동하기 위해서 다음을 실행하세요:
 
         cd angular.js
 
-3. To add the main AngularJS repository as an upstream remote to your repository, run:
+3. 메인 AngularJS 레포지토리를 당신의 레포지토리로의 원격 업스트립으로 추가하려면 다음을 실행하세요:
 
         git remote add upstream https://github.com/angular/angular.js.git
 
-4. To add node.js dependencies
+4. node.js dependency를 추가하기 위해서
 
         npm install
 
-5. To build AngularJS, run:
+5. AngularJS 빌드하기 위해서 다음을 실행하세요:
 
         grunt package
 
+주의:
 NOTE: If you're using Windows you must run your command line with administrative privileges (right click, run as
 Administrator).
 
