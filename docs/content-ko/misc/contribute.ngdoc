@@ -19,50 +19,49 @@ AngularJS는 {@link http://github.com/angular/angular.js/blob/master/LICENSE MIT
 
 <a name="H1_2"></a>
 # 소스코드에 기여하기
-저희는 당신이 소스코드에 기여하고, AngularJS를 보다 발전될 수 있도록 만들어주길 너무나도 바랍니다. 당신이 따라주길 바라는 안내서는 다음과 같습니다.
+저희는 당신이 소스코드에 기여하고, AngularJS를 좀 더 발전 될 수 있도록 만들어주길 간절히 바랍니다. 참고하여 따라주길 바라는 안내서는 다음과 같습니다.
 
-* 당신이 프로젝트에 기여하고자 하는 주요변화요소는 저희 노력을 조절하고, 중복작업을 예방하고, 당신의 작업이 성공적으로 적용될 수 있도록 도울 수 있기 때문에
-{@link https://groups.google.com/forum/?hl=en#!forum/angular mailing list}를 통하여 사전에 상의해주십시오.
+* 당신이 프로젝트에 기여하고자 하는 부분이 주요요소라면 {@link https://groups.google.com/forum/?hl=en#!forum/angular mailing list}를
+ 통하여 사전에 상의해주십시오. 저희 진행사항을 조절하면서 중복작업을 예방하고, 당신의 작업이 성공적으로 적용될 수 있도록 도울 수 있기 때문입니다.
 
-* 버그 수정과 작은 변경요소는 작업하고, <a href="#H1_5">pull request</a>로서 Github에 제출할 수 있습니다.
+
+* 버그 수정과 작은 변경요소는 작업하고, <a href="#H1_5">풀 요청(pull request)</a>를 통해서 Github에 제출할 수 있습니다.
 
 
 
 <a name="H1_3"></a>
 # 코드 기준 적용하기
 
-소스코드를 전반적으로 일관성있게 하려면, 우리가 그렇게 임하듯이 다음과 같은 규칙을 명심하십시오.
+전반적으로 소스코드를 일관성있게 하려면, 우리가 그렇게 하듯이 다음과 같은 규칙을 명심해야 합니다..
 
-* 모든 기능 또는 버그 수정은 한명 또는 그 이상의 사람에게 테스트 되어야 합니다  <a href="#unit-tests">specs</a>.
+* 모든 기능 또는 버그 수정은 한명 또는 그 이상의 사람에게 테스트 되어야 합니다  <a href="#unit-tests">스펙(specs)</a>.
 
-* 모든 공개 API 메소드는 ngdoc과 확정버젼의 jsdoc과 함께 서면화 되어야합니다 (jsdoc은 마크다운과 `@ngdoc` 태그를 통한 템플릿화를 위한 지원으로 저희
-가 추가했었습니다). 어떻게 저희가 API들을 서면화 하는지 보시려면, 현존하는 ngdocs를 확인하십시오.
+* 모든 공개용 API 메소드는 ngdoc과 확정버젼의 jsdoc과 함께 문서화 되어야합니다 (jsdoc은 마크다운과 `@ngdoc` 태그를 통한 템플릿화를 위한 지원으로 저희
+가 추가했었습니다). 어떻게 저희가 API들을 문서화를 하는지 보시려면, 현존하는 ngdocs를 확인하십시오.
 
-* 아래에 나열된 예회사항과 함께 저희는 {@link http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml Google's
+* 아래에 나열된 예외사항과 함께 저희는 {@link http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml Google's
 JavaScript Style Guide}에 담겨있는 규칙을 따릅니다.
 
-  * 네임스페이스(namespaces)사용하지 않기: 대신, 저희는 익명클로저(anonymous closure)에서의 전체 `angular` code base전체를 감쌉니다 그리고
-    암암리보다는 명쾌하게 API를 export 합니다.
-//무슨.. 말이죠? 마지막 그리고 부터??
-  * Do not use namespaces: Instead, we wrap the entire `angular` code base in an anonymous closure
-and export our API explicitly rather than implicitly.
+  * 네임스페이스(namespaces)사용하지마십시오: 대신, 저희는 익명클로저(anonymous closure)에서 전체 `angular` code base 전체를 감싸고 내부적이기
+  보다는 외부적으로 API를 export 합니다.
 
-  * 모든 코드는 100자에 감쌉니다.
+  * 모든 코드는 100내로 감쌉니다.
 
-  * 복잡한 상속구조를 대신하여, 저희는 간단한 오브젝트를 선호합니다. 우리는 정말 필요할 경우에는 원형적인 상속을 사용합니다.
+  * 복잡한 상속구조를 대신으로, 저희는 간단한 오브젝트를 선호합니다. 우리는 정말 필요할 경우에는 원형적인 상속을 사용합니다.
 
-  * 저희는 함수와 클로져를 사랑하고 가능하다면 언제든지 오브젝트보다 선호합니다.
+  * 저희는 함수와 클로져를 사랑하고, 가능하다면 오브젝트사용보다 선호합니다.
 
-  * 보다 축소화될 수 있는 간결한 코드를 작성하기 위해서는 내부적으로 저희는 외부적인 API로 연결되는 가명을 사용합니다. 어떤의미인지 이해하기 위해서 우리의
-  현존하는 코드를 확인하십시오.
+  * 보다 축소화될 수 있는 간결한 코드를 작성하기 위해서는 저희는 내부적으로 외부로 들어나는 API로 연결되는 가명을 사용합니다. 어떤의미인지 이해하기 위해서
+   우리의 현존하는 코드를 확인하십시오.
 
-  * AngularJS 전반적으로 사용되는 내부 API가 아니라면 개인적인 API에 타입주석을 적는데 목매이지 않습니다. 가장 좋은 안내는 쉽게 이해하도록 하는 것입니다.
+  * AngularJS 전반적으로 사용되는 API는 내부적으로 사용되는게 아니라면 API에 개인적인 타입주석을 적는데 목매이지 마십시오. 가장 좋은 안내는 쉽게
+  이해하도록 하는 것입니다.
 
 
 <a name="H1_4"></a>
 # 체크아웃과 Angular빌드하기
 
-AngularJS 소스코드는 {@link http://github.com Github}에 호스팅 되어있고, 우리는 또한 코드기여를 허용하는데도 사용하고 있습니다.
+AngularJS 소스코드는 {@link http://github.com Github}에 호스팅 되어있고, 코드기여가 가능토록 공용으로 사용하고 있습니다.
 AngularJS 레파지토리는 **<https://github.com/angular/angular.js>**에서 찾으실 수 있습니다.
 
 AngularJS 체크아웃과 빌드를 위해서는 몇가지 절차가 필요합니다:
@@ -73,24 +72,24 @@ AngularJS를 빌드하기 전에, 반듯이 당신의 컴퓨터에 다음과 같
 
 * Git: {@link http://help.github.com/mac-git-installation Github Guide to Installing Git}는 Git정보에 대한 정말 좋은 소스입니다.
 
-* {@link http://nodejs.org Node.js}: 우리는 서면화작업을 위해서, 웹서버 개발을 동작시키고, 테스트를 실행하고, 빌드 위해서 Node를 사용합니다.
-Node는 소스에서도 설치가 가능하고, 이미 준비된 번들로 설치도 가능합니다.
+* {@link http://nodejs.org Node.js}: 우리는 문서화작업을 위해서, 웹서버 개발을 동작시키고, 테스트를 실행하고, 빌드 위해서 Node를 사용합니다.
+Node는 소스에서도 설치가 가능하고, 이미 준비된 번들로도 설치가 가능합니다.
 
-  한번 설치를 하면, Angular레퍼지토리의 로컬 복사로 체크아웃을 하면 설치가 가능한 몇가지 npms(노드 패키지)가 필요할 것입니다. 다음을 통해서 체크아웃이
-  가능합니다:
+  설치를 하고나면, Angular레포지토리의 로컬 복사를 통해서 체크아웃을 하면 설치할 수 있는 몇가지 npms(노드 패키지)가 필요할 것입니다. 다음을 통해서
+   체크아웃이 가능합니다:
 
   * `cd angular.js`
   * `npm install`
 
-* {@link http://gruntjs.com Grunt}: 빌드 시스템으로 우리는 Grunt를 사용합니다. 다음으로 글로벌한 grunt 커멘드라인 툴을 설치하세요:
+* {@link http://gruntjs.com Grunt}: 우리는 빌드 시스템으로 Grunt를 사용합니다. 다음으로 글로벌한 grunt 커멘드라인 툴을 설치하십시오.:
 
   * `sudo npm install -g grunt-cli`
 
 
 ## Github 계정 만들고, Angular 포크하기
 
-Github 계정을 만들기 위해서 다음 {@link https://github.com/signup/free here}을 따라하세요.
-순서대로,  {@link http://help.github.com/forking fork} 와 {@link https://github.com/angular/angular.js main angular
+Github 계정을 만들기 위해서 다음 {@link https://github.com/signup/free here}을 따라하십시오.
+순서대로, {@link http://help.github.com/forking fork} 와 {@link https://github.com/angular/angular.js main angular
 repository}를 계속 진행하십시오.
 
 
@@ -99,15 +98,15 @@ repository}를 계속 진행하십시오.
 
 AngularJS를 빌드하기 위해서, 소스코드를 체크아웃하고, 축소판과 미축소판 AngularJS 파일을 만들기 위해서 Grunt를 사용하십시오.
 
-1. 당신의 Github를 복제하기 위해서 다음을 실행하세요:
+1. 당신의 Github를 복제하기 위해서 실행하십시오:
 
         git clone git@github.com:<github username>/angular.js.git
 
-2. AngularJS 디렉토리로 이동하기 위해서 다음을 실행하세요:
+2. AngularJS 디렉토리로 이동하기 위해서 실행하십시오:
 
         cd angular.js
 
-3. 메인 AngularJS 레포지토리를 당신의 레포지토리로의 원격 업스트립으로 추가하려면 다음을 실행하세요:
+3. 메인 AngularJS 레포지토리를 당신의 레포지토리로의 원격 업스트립(upstream)으로 추가하려면 실행하십시오:
 
         git remote add upstream https://github.com/angular/angular.js.git
 
@@ -115,164 +114,155 @@ AngularJS를 빌드하기 위해서, 소스코드를 체크아웃하고, 축소�
 
         npm install
 
-5. AngularJS 빌드하기 위해서 다음을 실행하세요:
+5. AngularJS 빌드하기 위해서 실행하십시오:
 
         grunt package
 
-주의:
-NOTE: If you're using Windows you must run your command line with administrative privileges (right click, run as
-Administrator).
+주의: 윈도우 사용자의 경우, 커멘드라인을 관리자권한으로 실행하십시오. (오른쪽마우스 클릭, 관리자권한으로 실행)
 
+`build` 디렉토리에 빌드 결과물이 위치하게 됩니다. 이 폴더는 다음과 같은 디렉토리와 파일로 구성됩니다.
 
-The build output can be located under the `build` directory. It consists of the following files and
-directories:
+* `angular-<version>.zip` — 이 파일은 빌드결과물의 모든 것들을 포함하는 완벽한 zip 파일입니다.
 
-* `angular-<version>.zip` — This is the complete zip file, which  contains all of the release build
-artifacts.
+* `angular.js` — 축소화 되지 않은 `angular` 스크립트.
 
-* `angular.js` — The non-minified `angular` script.
+* `angular.min.js` — 축소화된 `angular` 스크립트.
 
-* `angular.min.js` —  The minified `angular` script.
+* `angular-scenario.js` — `angular` End2End 테스트 실행자.
 
-* `angular-scenario.js` — The `angular` End2End test runner.
+* `docs/` — `docs.angularjs.org`를 실행하기 위한 모든 필요 파일을 담고 있는 디렉토리.
 
-* `docs/` — A directory that contains all of the files needed to run `docs.angularjs.org`.
+* `docs/index.html` — 문서화를 위한 메인 페이지.
 
-* `docs/index.html` — The main page for the documentation.
-
-* `docs/docs-scenario.html` — The End2End test runner for the documentation application.
+* `docs/docs-scenario.html` — 문서화 어플리케이션을 위한 End2End 테스트 실행자.
 
 
 <a name="webserver"></a>
-## Running a Local Development Web Server
+## 로컬 개발 웹 서버 돌리기
 
-To debug code and run end-to-end tests, it is often useful to have a local HTTP server. For this purpose, we have
-made available a local web server based on Node.js.
+코드를 디버그하고, 단과단(end-to-end) 테스트를 실행하기 위해서, 로컬 HTTP서버를 사용하는 것이 종종 유용합니다. 이런 목적에서, 우리는 Node.js를
+기반으로 한 로컵웹서버가 가능하게 했습니다.
 
-1. To start the web server, run:
+1. 웹서버를 실행하기 위해서, 실행하십시오:
 
         grunt webserver
 
-2. To access the local server, go to this website:
+2. 로컬서버에 접속하려면, 이 웹사이트로 가십시오.
 
         http://localhost:8000/
 
-   By default, it serves the contents of the AngularJS project directory.
+   기본값으로, AngularJS 프로젝트 디렉토리의 내용을 제공합니다.
 
 
 <a name="unit-tests"></a>
-## Running the Unit Test Suite
+## Unit Test Suite 실행하기
 
-Our unit and integration tests are written with Jasmine and executed with Testacular.  To run all of the
-tests once on Chrome run:
+우리의 유닛과 통합 테스트는 Jasmine으로 쓰였으며, Testacular를 사용하여 실행됩니다. Chrome에서 한번에 모든 테스트를 실항해라면, 실행하십시오:
 
     grunt test:unit
 
-To run the tests on other browsers (Chrome, ChromeCanary, Firefox, Opera and Safari are pre-configured) use:
+이런 테스트를 다른 브라우저에서 실행하시려면(Chrome, ChromeCanary, Firefox, Opera and Safari는 이미 설정되어있음) 다음을 실행하십시오:
 
     grunt test:unit --browsers Opera,Firefox
 
-Note there should be _no spaces between browsers_. `Opera, Firefox` is INVALID.
+브라우저사이에 공간이 없어야 한다는 점을 기억하세요. `Opera, Firefox`는 유효하지 않습니다.
 
-During development it's however more productive to continuously run unit tests every time the source or test files
-change. To execute tests in this mode run:
+하지만, 개발도중에는 소스 또는 테스트파일이 변경될 때마다 유닛테스트를 지속적으로 시행하는 것이 좀 더 생산성 있습니다. 이런 모드에서 테스트를 시행하려면:
 
-1. To start the Testacular server, capture Chrome browser and run unit tests, run:
+1. Testacular서버를 가동하려면, 크롬 브라우저를 잡고, 유닛테스트를 실행하십시오:
 
         grunt autotest:jqlite
 
-2. To capture more browsers, open this url in the desired browser (url might be different if you have multiple instance
-   of Testacular running, read Testacular's console output for the correct url):
+2. 다른 브라우저를 잡으려면, 원하는 브라우저에서 다음 url을 여세요( 만약 다중 인스턴스로 Testacular을 실행한다면, url은 달라질 수 있습니다,
+ 정확한 url을 위해 Testacular의 콘솔 결과(output)을 확인하십시오.
 
         http://localhost:9876/
 
-3. To re-run tests just change any source or test file.
+3. 테스트를 재 실행하기 위해서는 어떤 소스든 아니면, 테스트 파일이든 그저 변경하시면 됩니다.
 
 
-To learn more about all of the preconfigured Grunt tasks run:
+이미 정의된 Grunt task에 대해 배우기 위해서는 실행하십시오:
 
     grunt --help
 
 
-## Running the end-to-end Test Suite
+## 단과단(end-to-end) Test Suite 실행하기
 
-To run the E2E test suite:
 
-1. Start the local web server if it's not running already.
+단과단(E2E) test suite를 실행하기 위해서
+
+1. 이미 실행되고 있지 않다면, 로컬 웹 서버를 시작하십시오.
 
         grunt webserver
 
-2. In a browser, go to:
+2. 브라우저에서 다음으로 이동하십시오:
 
         http://localhost:8000/build/docs/docs-scenario.html
 
-   or in terminal run:
+   또는 터미널에서 실행하십시오:
 
         grunt test:end2end
 
-For convenience you can also simply run:
+편의를 위해서 간단하게 다음과 같이 실행할 수도 있습니다:
 
         grunt test:e2e
 
-This will start the webserver for you and run the tests.
+그럼 웹서버를 시작할 것이고, 테스트를 실행할 겁니다.
 
 
 
 <a name="H1_5"></a>
-# Submitting Your Changes
+# 변경부분 제출하기
 
-To create and submit a change:
+변경하고, 제출하기 위해서:
 
 1. <a name="CLA"></a>
-   Please sign our Contributor License Agreement (CLA) before sending pull requests. For any code changes to be
-   accepted, the CLA must be signed. It's a quick process, we promise!
+   풀 신청을 보내기전에 Contributor License Agreement (CLA)를 동의해주세요. 어떤 변경된 코드에 대해서 받아들여지려면 반듯이 CLA에 동의하셔야 합니다.
+   우리가 보장하건데 금방 끝납니다.
 
-   For individuals we have a [simple click-through form](http://code.google.com/legal/individual-cla-v1.0.html). For
-   corporations we'll need you to
-   [print, sign and one of scan+email, fax or mail the form](http://code.google.com/legal/corporate-cla-v1.0.html).
+   개인개발자들을 위해서 우리는 [간단 클릭폼](http://code.google.com/legal/individual-cla-v1.0.html) 을 보유하고 있습니다. 사업자를의 경우,
+   [프린트, 싸인, 그리고 이메일 또는 스캔중에 하나를 팩스발송 또는 이메일로 보내주십시오](http://code.google.com/legal/corporate-cla-v1.0.html).
 
 
-2. Create a new branch off the master for your changes:
+2. 변경을 위해서 마스터로부터 새로운 브랜치를 만드십시오.
 
         git branch my-fix-branch
 
-3. Check out the branch:
+3. 브랜치를 체크아웃(Check out)을 하십시오.
 
         git checkout my-fix-branch
 
-4. Create your patch, make sure to have plenty of tests (that pass).
+4. 패치를 만드시고, 많은 테스트(패스를 한)를 만들어야 합니다.
 
-5. Commit your changes and create a descriptive commit message (the commit message is used to generate release notes,
-   please check out our
-   [commit message conventions](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#)
-   and our commit message presubmit hook `validate-commit-msg.js`):
+5. 변경을 커밋하시고, 설명적인 커밋 메세지를 만드세요( 커밋 메세ㅈ는 배포 노트 제작에 사용됩니다. 저희의 [커밋 메세지 규약]
+(https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#)과 커밋 메세지 선접수된 고리
+ `validate-commit-msg.js`를 확인해주십시오.
 
         git commit -a
 
-6. Push your branch to Github:
+6. Github 에 당신의 브랜치를 푸시(push)하십시오..
 
         git push origin my-fix-branch
 
-7. In Github, send a pull request to `angular:master`.
+7. Github에서 `angular:master`로 풀(pull) 요청(request)을 보내십시오.
 
+8. 패치가 검토되고, 머지(merge)되면, 당신의 브랜치를 지우고, 당신이 만든 것과 다른 사람이 만든 변경사항을 메인(upstream)레포지토리에서 풀(pull)
+받으십시오.
 
-8. When the patch is reviewed and merged, delete your branch and pull yours — and other — changes
-from the main (upstream) repository:
-
-  1. To delete the branch in Github, run:
+  1. Github에서 브랜치를 삭제하려면, 실행하십시오:
 
             git push origin :my-fix-branch
 
-  2. To check out the master branch, run:
+  2. 마스터브랜치를 체크아웃(check out)하려면, 실행하십시오:
 
             git checkout master
 
-  3. To delete a local branch, run:
+  3. 로컬 브랜치를 삭제하기 위해서, 실행하십시오:
 
             git branch -D my-fix-branch
 
-  4. To update your master with the latest upstream version, run:
+  4. 최신 upstream버전으로 당신의 마스터를 업데이트하려면, 실행하십시오:
 
             git pull --ff upstream master
 
-That's it! Thank you for your contribution!
+바로 이겁니다! 당신의 기여에 감사드립니다!
