@@ -5,7 +5,7 @@
 
 * <a href="#H1_1">라이센스</a>
 * <a href="#H1_2">소스코드에 기여하기</a>
-* <a href="#H1_3">코드 기준 적용하기</a>
+* <a href="#H1_3">코드 표준안 적용하기</a>
 * <a href="#H1_4">체크아웃 하고 angluarJS 만들기</a>
 * <a href="#H1_5">변경사항 제출하기</a>
 
@@ -30,11 +30,11 @@ AngularJS는 {@link http://github.com/angular/angular.js/blob/master/LICENSE MIT
 
 
 <a name="H1_3"></a>
-# 코드 기준 적용하기
+# 코드 표준안 적용하기
 
 전반적으로 소스코드를 일관성있게 하려면, 우리가 그렇게 하듯이 다음과 같은 규칙을 명심해야 합니다..
 
-* 모든 기능 또는 버그 수정은 한명 또는 그 이상의 사람에게 테스트 되어야 합니다  <a href="#unit-tests">스펙(specs)</a>.
+* 하나 또는 그 이상의 <a href="#unit-tests">스펙(specs)</a>에 의해 테스트되야 합니다.
 
 * 모든 공개용 API 메소드는 ngdoc과 확정버젼의 jsdoc과 함께 문서화 되어야합니다 (jsdoc은 마크다운과 `@ngdoc` 태그를 통한 템플릿화를 위한 지원으로 저희
 가 추가했었습니다). 어떻게 저희가 API들을 문서화를 하는지 보시려면, 현존하는 ngdocs를 확인하십시오.
@@ -45,17 +45,17 @@ JavaScript Style Guide}에 담겨있는 규칙을 따릅니다.
   * 네임스페이스(namespaces)사용하지마십시오: 대신, 저희는 익명클로저(anonymous closure)에서 전체 `angular` code base 전체를 감싸고 내부적이기
   보다는 외부적으로 API를 export 합니다.
 
-  * 모든 코드는 100내로 감쌉니다.
+  * 모든 코드는 100자 내로 감쌉니다.
 
-  * 복잡한 상속구조를 대신으로, 저희는 간단한 오브젝트를 선호합니다. 우리는 정말 필요할 경우에는 원형적인 상속을 사용합니다.
+  * 복잡한 상속구조를 대신으로, 저희는 간단한 오브젝트를 선호합니다. 우리는 정말 필요할 경우에는 원형적인(prototypical) 상속을 사용합니다.
 
   * 저희는 함수와 클로져를 사랑하고, 가능하다면 오브젝트사용보다 선호합니다.
 
   * 보다 축소화될 수 있는 간결한 코드를 작성하기 위해서는 저희는 내부적으로 외부로 들어나는 API로 연결되는 가명을 사용합니다. 어떤의미인지 이해하기 위해서
    우리의 현존하는 코드를 확인하십시오.
 
-  * AngularJS 전반적으로 사용되는 API는 내부적으로 사용되는게 아니라면 API에 개인적인 타입주석을 적는데 목매이지 마십시오. 가장 좋은 안내는 쉽게
-  이해하도록 하는 것입니다.
+  * 우리는 AngularJS 전반적으로 사용되는 내부 API가 아니라면 비공개 내부 API에 주석을 작성하는데 목 메이지 않습니다. 가장 좋은 안내는 쉽게 이해하도록
+   하는 것입니다.
 
 
 <a name="H1_4"></a>
@@ -68,7 +68,7 @@ AngularJS 체크아웃과 빌드를 위해서는 몇가지 절차가 필요합�
 
 ## Dependency 설치
 
-AngularJS를 빌드하기 전에, 반듯이 당신의 컴퓨터에 다음과 같은 Dependency를 설정하고 설치해야만 합니다.
+AngularJS를 빌드하기 전에, 반드시 당신의 컴퓨터에 다음과 같은 Dependency를 설정하고 설치해야만 합니다.
 
 * Git: {@link http://help.github.com/mac-git-installation Github Guide to Installing Git}는 Git정보에 대한 정말 좋은 소스입니다.
 
@@ -128,19 +128,19 @@ AngularJS를 빌드하기 위해서, 소스코드를 체크아웃하고, 축소�
 
 * `angular.min.js` — 축소화된 `angular` 스크립트.
 
-* `angular-scenario.js` — `angular` End2End 테스트 실행자.
+* `angular-scenario.js` — `angular` 통합(End2End) 테스트 실행자.
 
 * `docs/` — `docs.angularjs.org`를 실행하기 위한 모든 필요 파일을 담고 있는 디렉토리.
 
 * `docs/index.html` — 문서화를 위한 메인 페이지.
 
-* `docs/docs-scenario.html` — 문서화 어플리케이션을 위한 End2End 테스트 실행자.
+* `docs/docs-scenario.html` — 문서화 어플리케이션을 위한 통합(End2End) 테스트 실행자.
 
 
 <a name="webserver"></a>
 ## 로컬 개발 웹 서버 돌리기
 
-코드를 디버그하고, 단과단(end-to-end) 테스트를 실행하기 위해서, 로컬 HTTP서버를 사용하는 것이 종종 유용합니다. 이런 목적에서, 우리는 Node.js를
+코드를 디버그하고, 통합(end-to-end) 테스트를 실행하기 위해서, 로컬 HTTP서버를 사용하는 것이 종종 유용합니다. 이런 목적에서, 우리는 Node.js를
 기반으로 한 로컵웹서버가 가능하게 했습니다.
 
 1. 웹서버를 실행하기 위해서, 실행하십시오:
@@ -157,7 +157,7 @@ AngularJS를 빌드하기 위해서, 소스코드를 체크아웃하고, 축소�
 <a name="unit-tests"></a>
 ## Unit Test Suite 실행하기
 
-우리의 유닛과 통합 테스트는 Jasmine으로 쓰였으며, Testacular를 사용하여 실행됩니다. Chrome에서 한번에 모든 테스트를 실항해라면, 실행하십시오:
+우리의 유닛과 통합 테스트는 Jasmine으로 쓰였으며, Testacular를 사용하여 실행됩니다. Chrome에서 한번에 모든 테스트를 실행하려라면, 실행하십시오:
 
     grunt test:unit
 
@@ -167,13 +167,13 @@ AngularJS를 빌드하기 위해서, 소스코드를 체크아웃하고, 축소�
 
 브라우저사이에 공간이 없어야 한다는 점을 기억하세요. `Opera, Firefox`는 유효하지 않습니다.
 
-하지만, 개발도중에는 소스 또는 테스트파일이 변경될 때마다 유닛테스트를 지속적으로 시행하는 것이 좀 더 생산성 있습니다. 이런 모드에서 테스트를 시행하려면:
+하지만, 개발도중에는 소스 또는 테스트파일이 변경될 때마다 유닛테스트를 지속적으로 실행하는 것이 좀 더 생산성 있습니다. 이런 모드에서 테스트를 시행하려면:
 
-1. Testacular서버를 가동하려면, 크롬 브라우저를 잡고, 유닛테스트를 실행하십시오:
+1. Testacular서버를 가동하고 크롬 브라우저에서 유닛테스트를 실행하려면 다음을 실행하십시오:
 
         grunt autotest:jqlite
 
-2. 다른 브라우저를 잡으려면, 원하는 브라우저에서 다음 url을 여세요( 만약 다중 인스턴스로 Testacular을 실행한다면, url은 달라질 수 있습니다,
+2. 다른 브라우저에서 테스트를 하려면, 원하는 브라우저에서 다음 url을 여십시오.( 만약 다중 인스턴스로 Testacular을 실행한다면, url은 달라질 수 있습니다,
  정확한 url을 위해 Testacular의 콘솔 결과(output)을 확인하십시오.
 
         http://localhost:9876/
@@ -186,7 +186,7 @@ AngularJS를 빌드하기 위해서, 소스코드를 체크아웃하고, 축소�
     grunt --help
 
 
-## 단과단(end-to-end) Test Suite 실행하기
+## 통합(end-to-end) Test Suite 실행하기
 
 
 단과단(E2E) test suite를 실행하기 위해서
@@ -217,8 +217,8 @@ AngularJS를 빌드하기 위해서, 소스코드를 체크아웃하고, 축소�
 변경하고, 제출하기 위해서:
 
 1. <a name="CLA"></a>
-   풀 신청을 보내기전에 Contributor License Agreement (CLA)를 동의해주세요. 어떤 변경된 코드에 대해서 받아들여지려면 반듯이 CLA에 동의하셔야 합니다.
-   우리가 보장하건데 금방 끝납니다.
+   풀 신청을 보내기전에 Contributor License Agreement (CLA)를 동의해주세요. 어떤 변경된 코드에 대해서 받아들여지려면 반드시 CLA에 동의하셔야 합니다.
+   금방 처리 할 것을 약속드립니다.
 
    개인개발자들을 위해서 우리는 [간단 클릭폼](http://code.google.com/legal/individual-cla-v1.0.html) 을 보유하고 있습니다. 사업자를의 경우,
    [프린트, 싸인, 그리고 이메일 또는 스캔중에 하나를 팩스발송 또는 이메일로 보내주십시오](http://code.google.com/legal/corporate-cla-v1.0.html).
@@ -232,10 +232,10 @@ AngularJS를 빌드하기 위해서, 소스코드를 체크아웃하고, 축소�
 
         git checkout my-fix-branch
 
-4. 패치를 만드시고, 많은 테스트(패스를 한)를 만들어야 합니다.
+4. 패치를 만드시고, 충분한 테스트(패스를 한)를 만들어야 합니다.
 
-5. 변경을 커밋하시고, 설명적인 커밋 메세지를 만드세요( 커밋 메세ㅈ는 배포 노트 제작에 사용됩니다. 저희의 [커밋 메세지 규약]
-(https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#)과 커밋 메세지 선접수된 고리
+5. 변경을 커밋하시고, 설명적인 커밋 메세지를 만드세요( 커밋 메세지는 배포 노트 제작에 사용됩니다. 저희의 [커밋 메세지 규약]
+(https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#)과 훅(hook)에 선접수된 커밋 메세지
  `validate-commit-msg.js`를 확인해주십시오.
 
         git commit -a
@@ -265,4 +265,4 @@ AngularJS를 빌드하기 위해서, 소스코드를 체크아웃하고, 축소�
 
             git pull --ff upstream master
 
-바로 이겁니다! 당신의 기여에 감사드립니다!
+다 되었습니다. 당신의 기여에 감사드립니다!
