@@ -1,57 +1,41 @@
 @ngdoc overview
-@name Developer Guide: Understanding Angular Templates
+@name Developer Guide: Angular 템플릿의 이해
 @description
 
-An Angular template is the declarative specification that, along with information from the model
-and controller, becomes the rendered view that a user sees in the browser. It is the static DOM,
-containing HTML, CSS, and angular-specific elements and angular-specific element attributes.  The
-Angular elements and attributes direct angular to add behavior and transform the template DOM into
-the dynamic view DOM.
+Angular 템플릿은, 모델과 컨트롤러에서의 정보를 유저가 브라우저를 통해서 볼 수 있게 뷰로 가공해주는, 선언적 명세서 입니다.
+HTML, CSS, 그리고 angular 특유의 요소, 그리고 그 요소의 속성을 포함하는 정적인 DOM입니다. angular 요소와 그 속성들은 angular로 하여금 템플릿 DOM을 다이나믹 뷰 DOM으로 변환하게 합니다.
 
-These are the types of Angular elements and element attributes you can use in a template:
+다음과 같은 타입의 Angular 요소와 그 속성들을 템플릿에 사용할 수 있습니다:
 
-* {@link guide/directive Directive} — An attribute or element that
-  augments an existing DOM element or represents a reusable DOM component - a widget.
-* {@link api/ng.$interpolate Markup} — The double
-curly brace notation `{{ }}` to bind expressions to elements is built-in angular markup.
-* {@link dev_guide.templates.filters Filter} — Formats your data for display to the user.
-* {@link forms Form controls} — Lets you validate user input.
+* {@link guide/directive 지시자(Directive)} - 기존의 DOM 요소 또는 재사용 DOM 컴포넌트를 보강하는 특성 또는 요소 - 위젯.
+* {@link api/ng.$interpolate 마크업(Markup)} - angular에 내장되어있는 마크업으로 표현식을 요소에 연결시켜주는 중괄호 한쌍 '{{ }}'
+* {@link dev_guide.templates.filters 필터(Filter)} - 사용자에게 데이터를 보여주기위해 변환을 해준다.
+* {@link forms 폼 컨트롤(Form controls)} - 사용자 입력의 유효성 검사를 할 수 있다.
 
-Note:  In addition to declaring the elements above in templates, you can also access these elements
-in JavaScript code.
+Note:  덧붙여 말하자면 위에 있는 요소가 템플릿에 선언이 되면, JavaScript 코드로도 접근 할 수있다.
 
-The following code snippet shows a simple Angular template made up of standard HTML tags along with
-Angular {@link guide/directive directives} and curly-brace bindings
-with {@link expression expressions}:
+다음 코드 스니펫은 표준 HTML 태그와 Angular {@link guide/directive 지시자(directives)} 
+그리고 {@link expression 표현식(expressions)}의 중괄호를 통한 바인딩을 한 간단한 Angular 템플릿을 보여준다:
 
 <pre>
 <html ng-app>
- <!-- Body tag augmented with ngController directive  -->
+ <!-- ngController 지시자(directive) 붙인바디 태그  -->
  <body ng-controller="MyController">
    <input ng-model="foo" value="bar">
-   <!-- Button tag with ng-click directive, and
-          string expression 'buttonText'
-          wrapped in "{{ }}" markup -->
+   <!-- ng-click 지시자(directive)를 이용한 버튼태그와 중괄호 쌍 "{{ }}" 마크업에 들어간 스트링 표현식 'buttonText' -->
    <button ng-click="changeFoo()">{{buttonText}}</button>
    <script src="angular.js">
  </body>
 </html>
 </pre>
 
-In a simple single-page app, the template consists of HTML, CSS, and angular directives contained
-in just one HTML file (usually `index.html`). In a more complex app, you can display multiple views
-within one main page using "partials", which are segments of template located in separate HTML
-files.  You "include" the partials in the main page using the {@link api/ng.$route
-$route} service in conjunction with the {@link api/ng.directive:ngView ngView} directive. An
-example of this technique is shown in the {@link tutorial/ angular tutorial}, in steps seven and
-eight.
+간단한 싱글페이지 앱에서는 템플릿이 HTML, CSS, angular 지시자(directives)가 모두 하나의 HTML 파일(주로 'index.html')로 구성되있다. 조금 더 복잡한 앱에서는, 여러개의 뷰를 별도의 HTML 파일들에 위치해있는 템플릿의 부분부분을 "partials"를 이용해 하나의 메인페이지에 보여줄 수 있다. partials를 {@link api/ng.directive:ngView ngView} 지시자(directive)와 연결되있는 {@link api/ng.$route $route} 서비스 를 이용해 메인페이지에 "include" 한다. 이러한 형식의 예제는 {@link tutorial/ angular tutorial} 7,8번 스텝에서 참고 할 수 있다.
 
+## 관련 토픽
 
-## Related Topics
+* {@link dev_guide.templates.filters Angular 필터}
+* {@link forms Angular 폼}
 
-* {@link dev_guide.templates.filters Angular Filters}
-* {@link forms Angular Forms}
+## 관련 API
 
-## Related API
-
-* {@link api/index API Reference}
+* {@link api/index API 레퍼런스}

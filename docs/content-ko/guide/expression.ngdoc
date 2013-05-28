@@ -1,42 +1,38 @@
 @ngdoc overview
-@name Developer Guide: Expressions
+@name Developer Guide: 표현식(Expressions)
 @description
 
-Expressions are JavaScript-like code snippets that are usually placed in bindings such as `{{
-expression }}`. Expressions are processed by {@link api/ng.$parse $parse}
-service.
+표현식은 `{{ 표현식 }}`처럼 대개 바인딩에 위치 되어지는 자바스크립트와 유사한 코드 조각이며,
+{@link api/ng.$parse $parse} 서비스에 의해 처리된다.
 
-For example, these are all valid expressions in angular:
+예를 들면, 아래 코드들은 모두 Angular에서 유효한 표현식이다:
 
   * `1+2`
   * `3*10 | currency`
   * `user.name`
 
 
-## Angular Expressions vs. JS Expressions
+## Angular 표현식 vs. 자바스크립트 표현식
 
-It might be tempting to think of Angular view expressions as JavaScript expressions, but that is
-not entirely correct, since Angular does not use a JavaScript `eval()` to evaluate expressions.
-You can think of Angular expressions as JavaScript expressions with following differences:
+Angular의 표현식을 자바스크립트의 표현식처럼 생각하기 쉽지만, Angular는 표현식을 해석하기 위해
+자바스크립트의 `eval()`을 사용하지 않기 때문에 완전히 같지는 않다. Angular의 표현식은
+자바스크립트의 표현식과 다음과 같은 차이점이 있다. 
 
-  * **Attribute Evaluation:** evaluation of all properties are against the scope, doing the
-    evaluation, unlike in JavaScript where the expressions are evaluated against the global
-    `window`.
+  * **속성의 해석:** 자바스크립트에서는 표현식이 전역 객체인 `window`에 대해서 해석되는 반면 
+    Angular에서는 모든 프로퍼티를 그 범위에 대해서 해석한다.
 
-  * **Forgiving:** expression evaluation is forgiving to undefined and null, unlike in JavaScript,
-    where such evaluations generate `NullPointerExceptions`.
+  * **관대함:** 표현식의 결과가 undefined나 null일 경우 자바스크립트에서는 'NullPointerExceptions'가
+    발생하지만 Angular에서는 발생하지 않는다.
 
-  * **No Control Flow Statements:** you cannot do any of the following in angular expression:
-    conditionals, loops, or throw.
+  * **흐름 제어문이 없음:** Angular의 표현식에는 조건문, 반복문, 또는 예외처리를 사용할 수 없다.
 
-  * **Filters:** you can pass result of expression evaluations through filter chains. For example
-    to convert date object into a local specific human-readable format.
+  * **필터:** 표현식의 결과를 필터 체인을 통해 전달할 수 있다. 예를 들면 date 객체를 특정 지역의
+    사람들이 읽을 수 있는 형식으로 변환할 수 있다.
 
-If, on the other hand, you do want to run arbitrary JavaScript code, you should make it a
-controller method and call the method. If you want to `eval()` an angular expression from
-JavaScript, use the {@link api/ng.$rootScope.Scope#$eval `$eval()`} method.
+반면에 임의로 자바스크립트 코드를 실행하고 싶다면, 컨트롤러 메소드를 만들어서 호출해야 한다.
+또한 자바스크립트에서 Angular의 표현식을 해석(`eval()`)하고 싶다면, {@link api/ng.$rootScope.Scope#$eval `$eval()`} 메소드를 사용한다.
 
-## Example
+## 예제
 <doc:example>
 <doc:source>
  1+2={{1+2}}
@@ -48,7 +44,7 @@ JavaScript, use the {@link api/ng.$rootScope.Scope#$eval `$eval()`} method.
 </doc:scenario>
 </doc:example>
 
-You can try evaluating different expressions here:
+여기에서 다른 표현식들을 해석해 볼 수 있다:
 
 <doc:example>
 <doc:source>
@@ -88,13 +84,13 @@ You can try evaluating different expressions here:
 </doc:example>
 
 
-# Property Evaluation
+# 프로퍼티의 해석
 
-Evaluation of all properties takes place against a scope. Unlike JavaScript, where names default
-to global window properties, Angular expressions have to use {@link api/ng.$window
-`$window`} to refer to the global `window` object. For example, if you want to call `alert()`, which is
-defined on `window`, in an expression you must use `$window.alert()`. This is done intentionally to
-prevent accidental access to the global state (a common source of subtle bugs).
+모든 프로퍼티의 해석은 한 범위 내에서 이루어진다. 자바스크립트에서는 전역 객체가 기본적으로 
+window가 되지만, Angular의 표현식에서는 전역 객체인 `window`를 참조하려면 {@link api/ng.$window
+`$window`}를 사용해야만 한다. 예를 들어, `window`에 정의된 `alert()`를 호출하고 싶을 경우에는 표현식에서
+`$window.alert()`를 사용한다. 이것은 의도적인 것으로 실수로 전역 상태에 접근하는 것을 방지하기 위함이다
+(일반적인 소스상의 미묘한 버그들).
 
 <doc:example>
 <doc:source>
@@ -129,58 +125,54 @@ prevent accidental access to the global state (a common source of subtle bugs).
 </doc:scenario>
 </doc:example>
 
-## Forgiving
+## 관대함
 
-Expression evaluation is forgiving to undefined and null. In JavaScript, evaluating `a.b.c` throws
-an exception if `a` is not an object. While this makes sense for a general purpose language, the
-expression evaluations are primarily used for data binding, which often look like this:
+표현식의 결과가 undefined나 null일 경우에 관대하게 처리된다. 자바스크립트에서는 `a.b.c`를 해석할 때
+`a`가 객체가 아닌 경우에는 예외로 처리한다. 범용 언어의 경우라면 적절하겠지만 표현식은 아래와 같이 보이는
+데이터 바인딩을 위해 주로 사용된다.
 
         {{a.b.c}}
 
-It makes more sense to show nothing than to throw an exception if `a` is undefined (perhaps we are
-waiting for the server response, and it will become defined soon). If expression evaluation wasn't
-forgiving we'd have to write bindings that clutter the code, for example: `{{((a||{}).b||{}).c}}`
+만약 `a`가 undefined라면 예외로 처리하는 것보다는 아무것도 보여주지 않는 것이 더 적절하다(아마 
+우리는 서버의 응답을 기다릴 것이고 그것은 곧 정의가 될 것이다). 만약 표현식을 관대하게 해석하지 않는다면
+다음 예와 같은 혼란스러운 코드로 바인딩을 작성해야만 한다: `{{((a||{}).b||{}).c}}`
 
-Similarly, invoking a function `a.b.c()` on undefined or null simply returns undefined.
-
-
-## No Control Flow Statements
-
-You cannot write a control flow statement in an expression. The reason behind this is core to the
-Angular philosophy that application logic should be in controllers, not in the view. If you need a
-conditional, loop, or to throw from a view expression, delegate to a JavaScript method instead.
+마찬가지로 undefined나 null인 상태에서 `a.b.c()` 함수를 호출하면 간단히 undefined를 반환한다.
 
 
-## Filters
+## 흐름 제어문이 없음
 
-When presenting data to the user, you might need to convert the data from its raw format to a
-user-friendly format. For example, you might have a data object that needs to be formatted
-according to the locale before displaying it to the user. You can pass expressions through a chain
-of filters like this:
+Angular의 표현식에서는 흐름 제어문을 사용할 수 없다. 그 이면에 숨겨진 이유는 애플리케이션의 로직은
+뷰가 아닌 컨트롤러에 있어야 한다는 Angular가 가지고 있는 철학의 핵심 때문이다. 만약 뷰의 표현식에
+조건문, 반복문, 또는 예외처리가 필요하다면 대신에 자바스크립트의 메소드에 위임한다.
+
+
+## 필터
+
+사용자에게 데이터를 보여줄 때는 로우 포맷에서 사용자 친화적인 포맷으로 데이터를 변환할 필요가 있다.
+예를 들어 데이터 객체는 사용자에게 보여지기 전에 그 지역에 맞는 포맷으로 바꿔져야 할 것이다.
+다음과 같이 필터의 체인을 통해 표현식을 넘겨줄 수 있다.
 
        name | uppercase
 
-The expression evaluator simply passes the value of name to {@link
-api/ng.filter:uppercase `uppercase`} filter.
+위 표현식은 간단하게 name의 값을 {@link api/ng.filter:uppercase `uppercase`} 필터에 전달한다.
 
-Chain filters using this syntax:
+다음과 같은 구문을 사용해서 필터를 연결한다:
 
        value | filter1 | filter2
 
-You can also pass colon-delimited arguments to filters, for example, to display the number 123
-with 2 decimal points:
+콜론을 구분자로 사용해서 필터에 인자도 전달할 수 있다. 다음 예는 숫자 123을 소수점 이하 두자리로
+보여주는 것이다. 
 
        123 | number:2
 
 # The $
 
-You might be wondering, what is the significance of the $ prefix? It is simply a prefix that
-angular uses, to differentiate its API names from others. If angular didn't use $, then evaluating
-`a.length()` would return undefined because neither a nor angular define such a property.
+아마 $ 접두어가 무엇을 의미하는지 궁금할지도 모른다. $는 단순히 다른 API 이름과 Angular API 이름을
+구분하기 위한 Angular가 사용하는 접두어일 뿐이다. 만약 Angular가 $를 사용하지 않았다면 `a.length()`는
+a나 Angular가 그런 프로퍼티를 정의하지 않았기 때문에 undefined를 반환할 것이다.
 
-Consider that in a future version of Angular we might choose to add a length method, in which case
-the behavior of the expression would change. Worse yet, you the developer could create a length
-property and then we would have a collision. This problem exists because Angular augments existing
-objects with additional behavior. By prefixing its additions with $ we are reserving our namespace
-so that angular developers and developers who use Angular can develop in harmony without collisions.
-
+표현식의 동작을 변경해야 하는 경우 Angular의 향후 버전에서 length 메소드가 추가되는 경우를 고려해 보자.
+설상가상으로 개발자인 당신이 직접 length 프로퍼티를 만들게 되면 충돌이 발생할 것이다. 이러한 문제는 
+Angular가 추가하는 동작으로 기존 객체를 확장시키기 때문에 발생한다. $가 붙은 접두어로 네임스페이스를
+확보함으로써 Angular 개발자와 Angular를 사용하는 개발자간에 충돌 없이 조화롭게 개발할 수 있는 것이다.

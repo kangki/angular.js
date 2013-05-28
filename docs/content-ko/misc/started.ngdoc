@@ -1,38 +1,33 @@
 @ngdoc overview
-@name Getting Started
+@name 시작하기
 @description
 
-We want you to have an easy time while starting to use Angular.  We've put together the following steps on your path to
-becoming an Angular expert.
+당신이 Angular를 쉽게 사용하기 시작하길 바랍니다. Angular 전문가가 되기 위한 과정을 다음과 같은 단계로 모아봤습니다.
 
-1. Read the {@link guide/concepts conceptual overview}.<br/>Understand Angular's vocabulary and how all the Angular
-   components work together.
-1. Do the {@link tutorial/ AngularJS Tutorial}.<br/>Walk end-to-end through building and application complete with tests
-   on top of a node.js web server.  Covers every major AngularJS feature and show you how to set up your development
-   environment.
-1. Download or clone the {@link https://github.com/angular/angular-seed Seed App project template}.<br/>Gives you a
-   starter app with a directory layout, test harness, and scripts to begin building your application.
+1. {@link guide/concepts conceptual overview} 를 읽으세요. Angular의 어휘와 컴포넌트를이 어떻게 함께 구동되는지 이해하세요. 이는 AngularJS 주요 기능을 포함하고 당신이 어떻게 개발환경을 설정하는지 보여줍니다.
 
+2. {@link tutorial/ AngularJS Tutorial}를 하세요. node.js 웹 서버에서 구동되는 테스트들이 다 있는 어플리케이션 구현의 끝을 경험 해보세요.
 
-#Further Steps
+3. {@link https://github.com/angular/angular-seed Seed App project template} 를 다운로드 하거나, 클론 하세요. 디렉토리 레이아웃, 테스트 장치, 그리고 당신의 어플리케이션 개발을 시작할 수 있는 스크립트를 제공합니다.
 
-##Watch Videos
+#다음 단계
 
-If you haven’t had a chance to watch the videos from the homepage, please check out:
+##동영상 시청
+
+홈페이지에서 동영상을 보지 않았다면, 확인해보세요.
 * {@link http://www.youtube.com/watch?v=WuiHuZq_cg4&list=PL173F1A311439C05D&context=C48ac877ADvjVQa1PpcFONnl4Q5x8hqvT6tRBTE-m0-Ym47jO3PEE%3D Introduction to AngularJS}
 * {@link http://www.youtube.com/watch?v=Yg-R1gchccg&list=PL173F1A311439C05D&context=C48ac877ADvjVQa1PpcFONnl4Q5x8hqvT6tRBTE-m0-Ym47jO3PEE%3D Creating Directives}
 * {@link http://www.youtube.com/watch?v=IRelx4-ISbs&list=PL173F1A311439C05D&context=C48ac877ADvjVQa1PpcFONnl4Q5x8hqvT6tRBTE-m0-Ym47jO3PEE%3D Communicating with Servers}
 
-And visit our {@link http://www.youtube.com/user/angularjs YouTube channel} for more AngularJS video presentations and
-tutorials.
+그리고 더 많은 AngulaerJS 동영상 프리젠테이션과 튜토리얼을 위해서 {@link http://www.youtube.com/user/angularjs YouTube channel} 를 방문하세요.
 
-##Subscribe
+##구독(Subscribe)
 
-* Subscribe to the {@link http://groups.google.com/forum/?fromgroups#!forum/angular mailing list}.  Ask questions here!
-* Follow us on {@link https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fangularjs.org%2F&region=follow_link&screen_name=angularjs&source=followbutton&variant=2.0 Twitter}
-* Add us to your circles on {@link https://plus.google.com/110323587230527980117/posts Google+}
+* {@link http://groups.google.com/forum/?fromgroups#!forum/angular mailing list}를 구독하고, 질문은 여기에 하세요.
+* {@link https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fangularjs.org%2F&region=follow_link&screen_name=angularjs&source=followbutton&variant=2.0 Twitter} 를 통해 저희를 팔로 하세요.
+* {@link https://plus.google.com/110323587230527980117/posts Google+}를 통해 저희를 서클 추가 해주세요.
 
-##Read more
+##읽을 거리
 
-The AngularJS documentation includes the {@link guide/index Developer Guide} covering concepts and the
-{@link api/ API Reference} for syntax and usage.
+이 AngularJS 문서는 개념을 설명하는 {@link guide/index Developer Guide}과 문법과 사용법을 위한 {@link api/ API Reference}를 포함하고 있습니다.
+
