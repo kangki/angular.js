@@ -1,71 +1,26 @@
 @ngdoc overview
-@name 개념적 개요
+@name Conceptual Overview
 @description
 
-# 개요
+# Overview
 
-이 문서는 angular의 중요 콤포넌트 와 콤포넌트의 상호 작동에 대한 간결한 개념을 제공한다.
-개념들은:
+This document gives a quick overview of the main angular components and how they work together.
+These are:
 
-  * {@link concepts#startup 시작하기} - hello world 둘러보기
-  * {@link concepts#runtime 런타임} - angular 런타임 개요
-  * {@link concepts#scope 스코프} - 뷰 와 컨트롤러 사이의 연결
-  * {@link concepts#controller 컨트롤러} - 어플리케이션 작동
-  * {@link concepts#model 모델} - 어플리케이션 데이터
-  * {@link concepts#view 뷰} - 사용자가 보는 것
-  * {@link concepts#directives 지시자} - HTML 확장
-  * {@link concepts#filters 필터} - 사용자 로컬 데이터 형식
-  * {@link concepts#injector 인젝터} - 어플리케이션 조립
-  * {@link concepts#module 모듈} - 인젝터 구성
-  * {@link concepts#angular_namespace `$`} - angular 네임스페이스
+  * {@link concepts#startup startup} - bring up hello world
+  * {@link concepts#runtime runtime} - overview of angular runtime
+  * {@link concepts#scope scope} - the glue between the view and the controller
+  * {@link concepts#controller controller} - application behavior
+  * {@link concepts#model model} - your application data
+  * {@link concepts#view view} - what the user sees
+  * {@link concepts#directives directives} - extend HTML vocabulary
+  * {@link concepts#filters filters} - format the data in user locale
+  * {@link concepts#injector injector} - assembles your application
+  * {@link concepts#module module} - configures the injector
+  * {@link concepts#angular_namespace `$`} - angular namespace
 
 <a name="startup"></a>
-# 시작하기
-
-angular를 처음 시작 하는 방법.(아래의 다이어그램 과 셈플 을 주목하자.):
-
-<img class="pull-right" style="padding-left: 3em;" src="img/guide/concepts-startup.png">
-
-  1. 브라우저는 HTML 과 DOM 내부를 분석하여 로드한다.
-  2. 브라우저는 `angular.js` 문서를 로드한다.
-  3. Angular는 `DOMContentLoaded` 이벤트가 발생할 동안 대기 한다.
-  4. Angular는 지정된 어플리케이션 영역에서
-     {@link api/ng.directive:ngApp ng-app} {@link guide/directive 지시자}를 찾는다.
-  5. {@link guide/module 모듈} specified in {@link api/ng.directive:ngApp ng-app} (if any) is used to configure the {@link api/AUTO.$injector $injector}
-  6. {@link api/AUTO.$injector $injector}는 is used to create the {@link api/ng.$compile $compile} service as well as {@link api/ng.$rootScope $rootScope}
-  7. The {@link api/ng.$compile $compile} service is used to compile the DOM and link
-     it   with {@link api/ng.$rootScope $rootScope}
-  8. {@link api/ng.directive:ngInit ng-init} {@link guide/directive 지시자}는 
-     {@link guide/scope 스코프} 안의 `name` 속성에 `World`를 할당한다.
-  9. `{{name}}`은 `Hello World!`로 표현되기 위해 {@link api/ng.$interpolate 보간한다}.
-
-  1. The browser loads the HTML and parses it into a DOM
-  2. The browser loads `angular.js` script
-  3. Angular waits for `DOMContentLoaded` event
-  4. Angular looks for {@link api/ng.directive:ngApp ng-app}
-    {@link guide/directive directive}, which designates the application boundary
-  5. The {@link guide/module Module} specified in {@link
-     api/ng.directive:ngApp ng-app} (if any) is used to configure
-     the {@link api/AUTO.$injector $injector}
-  6. The {@link api/AUTO.$injector $injector} is used to create the {@link
-     api/ng.$compile $compile} service as well as {@link
-     api/ng.$rootScope $rootScope}
-  7. The {@link api/ng.$compile $compile} service is used to compile the DOM and link
-     it   with {@link api/ng.$rootScope $rootScope}
-  8. The {@link api/ng.directive:ngInit ng-init} {@link
-     guide/directive directive} assigns `World` to the `name` property on the {@link guide/scope scope}
-  9. The `{{name}}` {@link api/ng.$interpolate interpolates} the expression to
-     `Hello World!`
-
-<div class="clear">
-</div>
-<example>
-  <file name="index.html">
-    <p ng-init=" name='World' ">Hello {{name}}!</p>
-  </file>
-</example>
-
-
+# Startup
 
 This is how we get the ball rolling (refer to the diagram and example below):
 

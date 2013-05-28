@@ -1,49 +1,47 @@
 @ngdoc overview
-@name Conceptual Overview
+@name 개념적 개요
 @description
 
-# Overview
+# 개요
 
-This document gives a quick overview of the main angular components and how they work together.
-These are:
+이 문서는 angular의 중요 콤포넌트 와 콤포넌트의 상호 작동에 대한 간결한 개념을 제공한다.
+개념들은:
 
-  * {@link concepts#startup startup} - bring up hello world
-  * {@link concepts#runtime runtime} - overview of angular runtime
-  * {@link concepts#scope scope} - the glue between the view and the controller
-  * {@link concepts#controller controller} - application behavior
-  * {@link concepts#model model} - your application data
-  * {@link concepts#view view} - what the user sees
-  * {@link concepts#directives directives} - extend HTML vocabulary
-  * {@link concepts#filters filters} - format the data in user locale
-  * {@link concepts#injector injector} - assembles your application
-  * {@link concepts#module module} - configures the injector
-  * {@link concepts#angular_namespace `$`} - angular namespace
+  * {@link concepts#startup 시작하기} - hello world 둘러보기
+  * {@link concepts#runtime 런타임} - angular 런타임 개요
+  * {@link concepts#scope 스코프} - 뷰 와 컨트롤러 사이의 연결
+  * {@link concepts#controller 컨트롤러} - 어플리케이션 작동
+  * {@link concepts#model 모델} - 어플리케이션 데이터
+  * {@link concepts#view 뷰} - 사용자가 보는 것
+  * {@link concepts#directives 지시자} - HTML 확장
+  * {@link concepts#filters 필터} - 사용자 로컬 데이터 형식
+  * {@link concepts#injector 인젝터} - 어플리케이션 조립
+  * {@link concepts#module 모듈} - 인젝터 구성
+  * {@link concepts#angular_namespace `$`} - angular 네임스페이스
 
 <a name="startup"></a>
-# Startup
+# 시작하기
 
-This is how we get the ball rolling (refer to the diagram and example below):
+angular를 시작 하는 방법 이다.(아래의 다이어그램 과 셈플 을 주목하자.):
 
 <img class="pull-right" style="padding-left: 3em;" src="img/guide/concepts-startup.png">
 
-  1. The browser loads the HTML and parses it into a DOM
-  2. The browser loads `angular.js` script
-  3. Angular waits for `DOMContentLoaded` event
-  4. Angular looks for {@link api/ng.directive:ngApp ng-app}
-    {@link guide/directive directive}, which designates the application boundary
-  5. The {@link guide/module Module} specified in {@link
-     api/ng.directive:ngApp ng-app} (if any) is used to configure
-     the {@link api/AUTO.$injector $injector}
-  6. The {@link api/AUTO.$injector $injector} is used to create the {@link
-     api/ng.$compile $compile} service as well as {@link
-     api/ng.$rootScope $rootScope}
-  7. The {@link api/ng.$compile $compile} service is used to compile the DOM and link
-     it   with {@link api/ng.$rootScope $rootScope}
-  8. The {@link api/ng.directive:ngInit ng-init} {@link
-     guide/directive directive} assigns `World` to the `name` property on the {@link guide/scope
-     scope}
-  9. The `{{name}}` {@link api/ng.$interpolate interpolates} the expression to
-     `Hello World!`
+  1. 브라우저는 HTML을 로드한 이후 DOM 내부를 구문 분석한다.
+  2. 브라우저는 `angular.js`를 로드한다.
+  3. Angular는 `DOMContentLoaded` 이벤트가 발생할 동안 대기 한다.
+  4. Angular는 지정된 어플리케이션 영역에서
+     {@link api/ng.directive:ngApp ng-app} 와 {@link guide/directive 지시자}를 찾는다.
+  5. {@link api/ng.directive:ngApp ng-app} 안에 명시된 {@link guide/module 모듈}이 
+     있는 경우에 모듈은 {@link api/AUTO.$injector $injector}를 구성하는 데 사용된다.
+  6. {@link api/AUTO.$injector $injector}는 {@link api/ng.$rootScope $rootScope}에 
+     포함되어 {@link api/ng.$compile $compile} 서비스 생성에 사용된다.
+  7. {@link api/ng.$compile $compile} 서비스는 DOM을 컴파일하고, 
+     {@link api/ng.$rootScope $rootScope}와 연결하는 데 사용된다.
+  8. {@link api/ng.directive:ngInit ng-init} {@link guide/directive 지시자}는 
+     {@link guide/scope 스코프} 안의 `name` 속성에 `World`를 할당한다.
+  9. `{{name}}`은 `Hello World!`로 표시되기 위해 보간({@link api/ng.$interpolate interpolate})된다.
+
+  보간 : 어떤 변수 또는 함수가 주어진 값으로 체워넣어짐
 
 <div class="clear">
 </div>
@@ -53,30 +51,27 @@ This is how we get the ball rolling (refer to the diagram and example below):
   </file>
 </example>
 
-
 <a name="runtime"></a>
-# Runtime
+# 런타임
 
 <img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="img/guide/concepts-runtime.png">
 
-The diagram and the example below describe how Angular interacts with the browser's event loop.
+아래의 다이어그램 과 셈플은 어떻게 Angular가 브라우저의 이벤트-루프와 상호작용하는지 묘사하고 있다.
 
-  1. The browser's event-loop waits for an event to arrive. An event is a user interactions, timer event,
-     or network event (response from a server).
-  2. The event's callback gets executed. This enters the JavaScript context. The callback can
-      modify the DOM structure.
-  3. Once the callback executes, the browser leaves the JavaScript context and
-     re-renders the view based on DOM changes.
+  1. 이벤트는 사용자 상호작용 또는 타이머 이벤트 및 네트워크 이벤트(서버로부터의 응답)를 말한다.
+     브라우저의 이벤트-루프는 이벤트가 도착할때 까지 대기한다.
+  2. 이벤트의 콜백이 실행된다. 이것은 자바스크립트 문맥안으로 들어가며, 
+     콜백은 DOM 구조를 수정할 수 있다.
+  3. 콜백이 실행되면, 브라우저는 자바스크립트 문맥을 벗어난 이후에 
+     DOM의 변화에 근거하여 화면을 다시 렌더링 한다.
 
-Angular modifies the normal JavaScript flow by providing its own event processing loop. This
-splits the JavaScript into classical and Angular execution context. Only operations which are
-applied in Angular execution context will benefit from Angular data-binding, exception handling,
-property watching, etc... You can also use $apply() to enter Angular execution context from JavaScript. Keep in
-mind that in most places (controllers, services) $apply has already been called for you by the
-directive which is handling the event. An explicit call to $apply is needed only when
-implementing custom event callbacks, or when working with a third-party library callbacks.
+Angular는 자신의 이벤트 처리 루프를 제공하여 자바스크립트의 흐름을 수정한다.
+This splits the JavaScript into classical and Angular execution context. 
+Only operations which are applied in Angular execution context will benefit from Angular data-binding, exception handling, property watching, etc... You can also use $apply() to enter Angular execution context from JavaScript. 
+Keep in mind that in most places (controllers, services) $apply has already been called for you by the directive which is handling the event. 
+An explicit call to $apply is needed only when implementing custom event callbacks, or when working with a third-party library callbacks.
 
-  1. Enter Angular execution context by calling {@link guide/scope scope}`.`{@link
+  1. Enter Angular execution context by calling {@link guide/scope 스코프}`.`{@link
      api/ng.$rootScope.Scope#$apply $apply}`(stimulusFn)`. Where `stimulusFn` is
      the work you wish to do in Angular execution context.
   2. Angular executes the `stimulusFn()`, which typically modifies application state.
@@ -136,9 +131,9 @@ user enters text into the text field.
 </example>
 
 <a name="scope"></a>
-#Scope
+# 스코프
 
-The {@link guide/scope scope} is responsible for detecting changes to the model section and
+{@link guide/scope 스코프}는 is responsible for detecting changes to the model section and
 provides the execution context for expressions. The scopes are nested in a hierarchical structure
 which closely follow the DOM structure. (See individual directive documentation to see which
 directives cause a creation of new scopes.)
@@ -184,7 +179,7 @@ a diagram depicting the scope boundaries.
 
 
 <a name="controller"></a>
-# Controller
+# 컨트롤러
 
 <img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="img/guide/concepts-controller.png">
 
@@ -228,7 +223,7 @@ The separation of the controller and the view is important because:
 
 
 <a name="model"></a>
-# Model
+# 모듈
 
 <img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="img/guide/concepts-model.png">
 
@@ -244,7 +239,7 @@ primitive, object hash, or a full object Type. In short the model is a plain Jav
 
 
 <a name="view"></a>
-# View
+# 뷰
 
 <img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="img/guide/concepts-view.png">
 
@@ -264,7 +259,7 @@ rendering the view compared to most other templating systems.
     strings. The template is still written in an HTML string, but it is HTML (not HTML with
     template sprinkled in.) The browser parses the HTML into the DOM, and the DOM becomes the input to
     the template engine known as the {@link api/ng.$compile compiler}. The compiler
-    looks for {@link guide/directive directives} which in turn set up {@link
+    looks for {@link guide/directive 지시자} which in turn set up {@link
     api/ng.$rootScope.Scope#$watch watches} on the model. The result is a
     continuously updating view which does not need template model re-merging. Your model becomes
     the single source-of-truth for your view.
@@ -289,7 +284,7 @@ rendering the view compared to most other templating systems.
 
 
 <a name="directives"></a>
-# Directives
+# 지시자
 
 A directive is a behavior or DOM transformation which is triggered by the presence of a custom attribute,
 element name, or a class name. A directive allows you to extend the HTML vocabulary in a
@@ -335,7 +330,7 @@ in HTML.
 </example>
 
 <a name="filters"></a>
-# Filters
+# 필터
 
 {@link api/ng.$filter Filters} perform data transformation. Typically
 they are used in conjunction with the locale to format the data in locale specific output.
@@ -354,7 +349,7 @@ They follow the spirit of UNIX filters and use similar syntax `|` (pipe).
 
 <a name="module"></a>
 <a name="injector"></a>
-# Modules and the Injector
+# 모듈 과 인젝터
 
 <img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="img/guide/concepts-module-injector.png">
 
@@ -460,7 +455,7 @@ dependencies, look for dependencies, or even get a reference to the injector.
 
 
 <a name="angular_namespace"></a>
-# Angular Namespace
+# Angular 네임스페이스
 
 To prevent accidental name collision, Angular prefixes names of objects which could potentially
 collide with `$`. Please do not use the `$` prefix in your code as it may accidentally collide
