@@ -4,12 +4,8 @@
 
 # 개요
 
-# Overview
-
-이 문서는 angular의 중요 콤포넌트 와 콤포넌트의 상호 작동에 대한 간결한 개념적 개요를 제공한다.
-
-This document gives a quick overview of the main angular components and how they work together.
-These are:
+이 문서는 angular의 중요 콤포넌트 와 콤포넌트의 상호 작동에 대한 간결한 개념을 제공한다.
+개념들은:
 
   * {@link concepts#startup 시작하기} - hello world 둘러보기
   * {@link concepts#runtime 런타임} - angular 런타임 개요
@@ -23,24 +19,10 @@ These are:
   * {@link concepts#module 모듈} - 인젝터 구성
   * {@link concepts#angular_namespace `$`} - angular 네임스페이스
 
-  * {@link concepts#startup startup} - bring up hello world
-  * {@link concepts#runtime runtime} - overview of angular runtime
-  * {@link concepts#scope scope} - the glue between the view and the controller
-  * {@link concepts#controller controller} - application behavior
-  * {@link concepts#model model} - your application data
-  * {@link concepts#view view} - what the user sees
-  * {@link concepts#directives directives} - extend HTML vocabulary
-  * {@link concepts#filters filters} - format the data in user locale
-  * {@link concepts#injector injector} - assembles your application
-  * {@link concepts#module module} - configures the injector
-  * {@link concepts#angular_namespace `$`} - angular namespace
-
 <a name="startup"></a>
 # 시작하기
 
-이것은 우리가 시작을 할때에 대한 것이다.(아래의 다이어그램 과 셈플 을 주목하자.):
-
-This is how we get the ball rolling (refer to the diagram and example below):
+angular를 처음 시작 하는 방법.(아래의 다이어그램 과 셈플 을 주목하자.):
 
 <img class="pull-right" style="padding-left: 3em;" src="img/guide/concepts-startup.png">
 
@@ -84,28 +66,6 @@ This is how we get the ball rolling (refer to the diagram and example below):
 </example>
 
 
-
-
-
-# Overview
-
-This document gives a quick overview of the main angular components and how they work together.
-These are:
-
-  * {@link concepts#startup startup} - bring up hello world
-  * {@link concepts#runtime runtime} - overview of angular runtime
-  * {@link concepts#scope scope} - the glue between the view and the controller
-  * {@link concepts#controller controller} - application behavior
-  * {@link concepts#model model} - your application data
-  * {@link concepts#view view} - what the user sees
-  * {@link concepts#directives directives} - extend HTML vocabulary
-  * {@link concepts#filters filters} - format the data in user locale
-  * {@link concepts#injector injector} - assembles your application
-  * {@link concepts#module module} - configures the injector
-  * {@link concepts#angular_namespace `$`} - angular namespace
-
-<a name="startup"></a>
-# Startup
 
 This is how we get the ball rolling (refer to the diagram and example below):
 
