@@ -61,19 +61,23 @@ angular를 시작 하는 방법 이다.(아래의 다이어그램 과 셈플 을
   1. 이벤트는 사용자 상호작용 또는 타이머 이벤트 및 네트워크 이벤트(서버로부터의 응답)를 말한다.
      브라우저의 이벤트-루프는 이벤트가 도착할때 까지 대기한다.
   2. 이벤트의 콜백이 실행된다. 이것은 자바스크립트 문맥안으로 들어가며, 
-     콜백은 DOM 구조를 수정할 수 있다.
+     콜백은 DOM 구조를 변경할 수 있다.
   3. 콜백이 실행되면, 브라우저는 자바스크립트 문맥을 벗어난 이후에 
      DOM의 변화에 근거하여 화면을 다시 렌더링 한다.
 
-Angular는 자신의 이벤트 처리 루프를 제공하여 자바스크립트의 흐름을 수정한다.
-This splits the JavaScript into classical and Angular execution context. 
-Only operations which are applied in Angular execution context will benefit from Angular data-binding, exception handling, property watching, etc... You can also use $apply() to enter Angular execution context from JavaScript. 
-Keep in mind that in most places (controllers, services) $apply has already been called for you by the directive which is handling the event. 
+Angular는 자신의 이벤트 처리 루프를 제공하여 자바스크립트의 흐름을 변경한다.
+이것은 자바스크립트 내부의 클래식한 부분 과 Angular 실행 컨텍스트로 분할한다.
+오로지 실행 컨텍스트 안에서 제공되는 명령들만이 Angular의 데이터 바인딩, 예외 처리, 속성 관찰, 기타...의 상황에 유용할 것이다. 
+게다가 당신은 $apply()로 자바스크립트에서 발생하는 Angular의 예외 컨텍스트를 사용 할수있다.
+대부분의 영역(컨트롤러, 서비스)안에서 염두해야 할 것은 이벤트를 처리하는 지시자에 의해 $apply는 이미 호출된다.
+
+
+
 An explicit call to $apply is needed only when implementing custom event callbacks, or when working with a third-party library callbacks.
 
-  1. Enter Angular execution context by calling {@link guide/scope 스코프}`.`{@link
+  1. Enter Angular 실행 컨텍스트 by calling {@link guide/scope 스코프}`.`{@link
      api/ng.$rootScope.Scope#$apply $apply}`(stimulusFn)`. Where `stimulusFn` is
-     the work you wish to do in Angular execution context.
+     the work you wish to do in Angular 실행 컨텍스트.
   2. Angular executes the `stimulusFn()`, which typically modifies application state.
   3. Angular enters the {@link api/ng.$rootScope.Scope#$digest $digest} loop. The
      loop is made up of two smaller loops which process {@link
@@ -111,13 +115,13 @@ user enters text into the text field.
      2. The {@link api/ng.directive:input input} directive
         captures the change to the input's value and calls {@link
         api/ng.$rootScope.Scope#$apply $apply}`("name = 'X';")` to update the
-        application model inside the Angular execution context.
+        application model inside the Angular 실행 컨텍스트.
      3. Angular applies the `name = 'X';` to the model.
      4. The {@link api/ng.$rootScope.Scope#$digest $digest} loop begins
      5. The {@link api/ng.$rootScope.Scope#$watch $watch} list detects a change
         on the `name` property and notifies the {@link api/ng.$interpolate
         &#123;&#123;name&#125;&#125; } interpolation, which in turn updates the DOM.
-     6. Angular exits the execution context, which in turn exits the `keydown` event and with it
+     6. Angular exits the 실행 컨텍스트, which in turn exits the `keydown` event and with it
         the JavaScript execution context.
      7. The browser re-renders the view with update text.
 
@@ -366,7 +370,7 @@ as a {@link api/AUTO.$provide provider}.
 
 <div class='clear'></div>
 <pre>
-  // Create a module
+  // 모듈 생성
   var myModule = angular.module('myModule', [])
 
   // Configure the injector
@@ -395,7 +399,7 @@ allows the methods and types to ask for their dependencies instead of having to 
 <pre>
   // You write functions such as this one.
   function doSomething(serviceA, serviceB) {
-    // do something here.
+    // 이곳에 입력하세요.
   }
 
   // Angular provides the injector for your application
@@ -457,6 +461,7 @@ dependencies, look for dependencies, or even get a reference to the injector.
 <a name="angular_namespace"></a>
 # Angular 네임스페이스
 
-To prevent accidental name collision, Angular prefixes names of objects which could potentially
-collide with `$`. Please do not use the `$` prefix in your code as it may accidentally collide
-with Angular code.
+Angular는 객체의 이름 앞에 잠제적으로 충돌할 수 있는 `$`가 붙어있다.
+실수에 의한 이름 충돌을 방지하려면, 
+당신의 코드 안에서 Angular 코드 와 우연히 충돌 할수 있으므로 `$` 접두어를 사용하지 마십시오.
+ 
