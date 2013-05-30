@@ -29,7 +29,7 @@ angular를 시작 하는 방법 이다.(아래의 다이어그램 과 셈플 을
   1. 브라우저는 HTML을 로드한 이후 DOM 내부를 구문 분석한다.
   2. 브라우저는 `angular.js`를 로드한다.
   3. Angular는 `DOMContentLoaded` 이벤트가 발생할 동안 대기 한다.
-  4. Angular는 지정된 어플리케이션 영역에서
+  4. Angular는 지정된 어플리케이션 영역에서 
      {@link api/ng.directive:ngApp ng-app} 와 {@link guide/directive 지시자}를 찾는다.
   5. {@link api/ng.directive:ngApp ng-app} 안에 명시된 {@link guide/module 모듈}이 
      있는 경우에 모듈은 {@link api/AUTO.$injector $injector}를 구성하는 데 사용된다.
@@ -71,9 +71,7 @@ Angular는 자신의 이벤트 처리 루프를 제공하여 자바스크립트�
 게다가 당신은 $apply()로 자바스크립트에서 발생하는 Angular의 예외 컨텍스트를 사용 할수있다.
 대부분의 영역(컨트롤러, 서비스)안에서 염두해야 할 것은 이벤트를 처리하는 지시자에 의해 $apply는 이미 호출된다.
 
-
-
-An explicit call to $apply is needed only when implementing custom event callbacks, or when working with a third-party library callbacks.
+$apply는 단지 사용자 이벤트 반환함수의 구현 또는 함께 동작하는 제 3의 라이브러리 반환함수에 의하여 확실하게 호출된다.
 
   1. Enter Angular 실행 컨텍스트 by calling {@link guide/scope 스코프}`.`{@link
      api/ng.$rootScope.Scope#$apply $apply}`(stimulusFn)`. Where `stimulusFn` is
@@ -187,10 +185,10 @@ a diagram depicting the scope boundaries.
 
 <img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="img/guide/concepts-controller.png">
 
-A controller is the code behind the view. Its job is to construct the model and publish it to the
-view along with callback methods. The view is a projection of the scope onto the template (the
-HTML). The scope is the glue which marshals the model to the view and forwards the events to the
-controller.
+A controller is the code behind the view. 
+Its job is to construct the model and publish it to the view along with callback methods.
+The view is a projection of the scope onto the template (the HTML).
+The scope is the glue which marshals the model to the view and forwards the events to the controller.
 
 The separation of the controller and the view is important because:
 
@@ -247,7 +245,7 @@ primitive, object hash, or a full object Type. In short the model is a plain Jav
 
 <img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="img/guide/concepts-view.png">
 
-The view is what the user sees. The view begins its life as a template, is merged with the
+뷰는 당신에게 보여지는 것이다. The view begins its life as a template, is merged with the
 model and finally rendered into the browser DOM. Angular takes a very different approach to
 rendering the view compared to most other templating systems.
 
@@ -336,9 +334,9 @@ in HTML.
 <a name="filters"></a>
 # 필터
 
-{@link api/ng.$filter Filters} perform data transformation. Typically
-they are used in conjunction with the locale to format the data in locale specific output.
-They follow the spirit of UNIX filters and use similar syntax `|` (pipe).
+{@link api/ng.$filter 필터}는 데이터의 변환을 수행한다. 
+Typically they are used in conjunction with the locale to format the data in locale specific output.
+They follow the spirit of UNIX filters and use similar syntax `|` (파이프).
 
 <example>
   <file name="index.html">
@@ -357,36 +355,33 @@ They follow the spirit of UNIX filters and use similar syntax `|` (pipe).
 
 <img class="pull-right" style="padding-left: 3em; padding-bottom: 1em;" src="img/guide/concepts-module-injector.png">
 
-The {@link api/AUTO.$injector injector} is a service locator. There is a single
-{@link api/AUTO.$injector injector} per Angular {@link
-api/ng.directive:ngApp application}. The {@link
-api/AUTO.$injector injector} provides a way to look up an object instance by its
-name. The injector keeps an internal cache of all objects so that repeated calls to get the same
-object name result in the same instance. If the object does not exist, then the {@link
-api/AUTO.$injector injector} asks the instance factory to create a new instance.
+{@link api/AUTO.$injector 인젝터}는 서비스 탐지기 이다. 
+{@link api/AUTO.$injector 인젝터}는 Angular {@link api/ng.directive:ngApp 어플리케이션}당 하나이다. 
+{@link api/AUTO.$injector 인젝터}는 객체의 인스턴스를 이름으로 검색하는 방법을 제공한다.
+인젝터는 내부 캐시안의 모든 객체를 유지한다. 따라서 같은 인스턴스에서 같은 객체이름의 결과를 얻기위한 호출이 반복된다.
+만약 객체가 존재하지 않으면, {@link api/AUTO.$injector 인젝터}는 새로운 인스턴스를 만들기위해 인스턴스 펙토리를 요청할 것이다.
 
-A {@link api/angular.Module module} is a way to configure the injector's instance factory, known
-as a {@link api/AUTO.$provide provider}.
+{@link api/AUTO.$provide 공급자}로 알려져있는 {@link api/angular.Module 모듈}은 인젝터의 인스턴스 펙토리를 구성하는 방법이다.
 
 <div class='clear'></div>
 <pre>
   // 모듈 생성
-  var myModule = angular.module('myModule', [])
+  var myModule = angular.module('myModule', []);
 
-  // Configure the injector
+  // 인젝터 구성
   myModule.factory('serviceA', function() {
     return {
-      // instead of {}, put your object creation here
+      // 이곳에 {} 대신, 당신의 객체생성을 입력.
     };
   });
 
-  // create an injector and configure it from 'myModule'
+  // 'myModule'로 인젝터의 생성 및 구성
   var $injector = angular.injector(['myModule']);
 
-  // retrieve an object from the injector by name
+  // 이름으로 인젝터로부터 객체를 검색
   var serviceA = $injector.get('serviceA');
 
-  // always true because of instance cache
+  // 인스턴스 캐시에 의하여 항상 참이다.
   $injector.get('serviceA') === $injector.get('serviceA');
 </pre>
 
@@ -397,26 +392,26 @@ api/AUTO.$injector#instantiate instantiate} types. This subtle feature is what
 allows the methods and types to ask for their dependencies instead of having to look for them.
 
 <pre>
-  // You write functions such as this one.
+  // 이와 같이 함수를 작성한다.
   function doSomething(serviceA, serviceB) {
     // 이곳에 입력하세요.
   }
 
-  // Angular provides the injector for your application
+  // Angular는 당신의 어플리케이션을 위해 인젝터를 제공한다.
   var $injector = ...;
 
   ///////////////////////////////////////////////
-  // the old-school way of getting dependencies.
+  // 종속성을 얻어오는 구식 방법
   var serviceA = $injector.get('serviceA');
   var serviceB = $injector.get('serviceB');
 
-  // now call the function
+  // 이제 함수를 호출한다.
   doSomething(serviceA, serviceB);
 
   ///////////////////////////////////////////////
-  // the cool way of getting dependencies.
-  // the $injector will supply the arguments to the function automatically
-  $injector.invoke(doSomething); // This is how the framework calls your functions
+  // 종속성을 얻어오는 참신한 방법
+  // $injector는 함수에 자동으로 아규먼트를 제공한다.
+  $injector.invoke(doSomething); // 프레임 워크에서 당신의 함수를 호출하는 방법
 </pre>
 
 Notice that the only thing you needed to write was the function, and list the dependencies in the
@@ -461,7 +456,6 @@ dependencies, look for dependencies, or even get a reference to the injector.
 <a name="angular_namespace"></a>
 # Angular 네임스페이스
 
-Angular는 객체의 이름 앞에 잠제적으로 충돌할 수 있는 `$`가 붙어있다.
-실수에 의한 이름 충돌을 방지하려면, 
-당신의 코드 안에서 Angular 코드 와 우연히 충돌 할수 있으므로 `$` 접두어를 사용하지 마십시오.
+이름의 우현에 의한 충돌을 방지하려고, Angular는 충돌할 가능성이 있는 객체의 이름 앞에 `$`를 붙인다.
+당신의 코드 안에서 Angular 코드 와 우연히 충돌 할 수 있으므로 `$` 접두어를 사용하지 마십시오.
  
